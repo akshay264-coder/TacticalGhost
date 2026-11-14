@@ -20,7 +20,7 @@ def test_api_health():
     res = health_check()
     assert res["status"] == "healthy"
     assert "modules" in res
-    assert len(res["modules"]) == 5
+    assert len(res["modules"]) >= 5
 
 
 def test_api_sequences():

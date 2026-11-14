@@ -33,6 +33,7 @@ import { PlayerInteractionsPanel } from './components/modules/PlayerInteractions
 import { TacticalDecisionsPanel } from './components/modules/TacticalDecisionsPanel';
 import { PlayerInspectorModal } from './components/inspector/PlayerInspectorModal';
 import { SequenceComparisonDashboard } from './components/comparison/SequenceComparisonDashboard';
+import { TacticalIntelligenceCentre } from './components/patterns/TacticalIntelligenceCentre';
 
 import {
   Shield,
@@ -71,9 +72,11 @@ const defaultLayerConfig: VisualizationLayersConfig = {
 };
 
 export default function App() {
-  // Navigation mode: 'single' sequence analysis vs 'comparison' engine
-  const [appMode, setAppMode] = useState<'single' | 'comparison'>(() => {
-    return window.location.search.includes('mode=comparison') ? 'comparison' : 'single';
+  // Navigation mode: 'single' sequence analysis vs 'comparison' engine vs 'patterns' intelligence centre
+  const [appMode, setAppMode] = useState<'single' | 'comparison' | 'patterns'>(() => {
+    if (window.location.search.includes('mode=comparison')) return 'comparison';
+    if (window.location.search.includes('mode=patterns') || window.location.search.includes('mode=intelligence')) return 'patterns';
+    return 'single';
   });
 
   // Sequences state
@@ -329,6 +332,26 @@ export default function App() {
     }
   }, [trackingFrames]);
 
+  // Handle jump from Pattern Intelligence Centre directly to Pitch at specific sequence and frame
+  const handleJumpToSequence = useCallback((seqId: string, targetFrame: number, highlightedPlayers?: string[]) => {
+    setIsPlaying(false);
+    const targetSeq = sequences.find(s => s.sequence_id === seqId);
+    if (targetSeq) {
+      if (targetSeq.sequence_id !== currentSequence?.sequence_id) {
+        setCurrentSequence(targetSeq);
+      }
+      const frameIdx = Math.max(0, targetFrame - targetSeq.start_frame);
+      setCurrentFrameIndex(frameIdx);
+    }
+    if (highlightedPlayers && highlightedPlayers.length > 0) {
+      const pId = highlightedPlayers[0];
+      const matchP = currentFrame?.home_players.find(p => p.player_id === pId) ||
+                     currentFrame?.away_players.find(p => p.player_id === pId);
+      if (matchP) setSelectedPlayer(matchP);
+    }
+    setAppMode('single');
+  }, [sequences, currentSequence, currentFrame]);
+
   // Find active decision evaluation at or near current frame
   const currentDecisionEval = decisionsData.find(d => Math.abs(d.decision_frame - (currentFrame?.frame || 0)) <= 3) || decisionsData[0] || null;
 
@@ -344,8 +367,9 @@ export default function App() {
             <div>
               <div className="flex items-center space-x-2">
                 <h1 className="font-bold text-lg text-slate-100 tracking-tight">TacticalGhost</h1>
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-cyan-950 text-cyan-400 border border-cyan-800/60">
-                  v1.5 Comparison Engine
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-amber-950/80 text-amber-400 border border-amber-800/60 flex items-center space-x-1">
+                  <Sparkles className="w-2.5 h-2.5" />
+                  <span>v1.6 Commercial Pattern Engine</span>
                 </span>
               </div>
               <p className="text-xs text-slate-400">See the game beyond the ball.</p>
@@ -374,6 +398,17 @@ export default function App() {
             >
               <GitCompare className="w-3.5 h-3.5" />
               <span>Comparison Engine</span>
+            </button>
+            <button
+              onClick={() => setAppMode('patterns')}
+              className={`px-3 py-1 rounded text-xs font-semibold transition flex items-center space-x-1.5 ${
+                appMode === 'patterns'
+                  ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <span>Intelligence Centre</span>
             </button>
           </div>
         </div>
@@ -428,7 +463,11 @@ export default function App() {
 
       {/* Main Content Workspace */}
       <main className="flex-1 p-4 lg:p-6 max-w-[1600px] w-full mx-auto relative">
-        {appMode === 'comparison' ? (
+        {appMode === 'patterns' ? (
+          <TacticalIntelligenceCentre
+            onJumpToSequence={handleJumpToSequence}
+          />
+        ) : appMode === 'comparison' ? (
           <SequenceComparisonDashboard
             sequences={sequences}
             defaultLayersConfig={layersConfig}

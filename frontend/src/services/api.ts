@@ -126,3 +126,25 @@ export async function fetchSequenceComparison(seqA: string, seqB: string): Promi
 export function getComparisonReportHtmlUrl(seqA: string, seqB: string): string {
   return `${BASE_URL}/comparison/report/html?seq_a=${seqA}&seq_b=${seqB}`;
 }
+
+export async function fetchMatchPatternSummary(): Promise<any> {
+  const res = await fetch(`${BASE_URL}/patterns/match-summary`);
+  if (!res.ok) throw new Error('Failed to load match pattern summary');
+  return res.json();
+}
+
+export async function fetchSequencePatterns(sequenceId: string): Promise<any> {
+  const res = await fetch(`${BASE_URL}/patterns/sequence/${sequenceId}`);
+  if (!res.ok) throw new Error(`Failed to load patterns for sequence ${sequenceId}`);
+  return res.json();
+}
+
+export async function fetchPatternComparison(seqA: string, seqB: string): Promise<any> {
+  const res = await fetch(`${BASE_URL}/patterns/compare?seq_a=${seqA}&seq_b=${seqB}`);
+  if (!res.ok) throw new Error(`Failed to compare patterns for ${seqA} and ${seqB}`);
+  return res.json();
+}
+
+export function getCommercialBriefingHtmlUrl(): string {
+  return `${BASE_URL}/patterns/briefing/html`;
+}

@@ -8,7 +8,7 @@ from fastapi import APIRouter, HTTPException, Query
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 
-from app.core.dataloader import MatchDataManager
+from app.api.routes_sequences import data_manager
 from app.core.pitch_control import PitchControlEngine
 from app.modules.space_creation import SpaceCreationAnalyzer
 from app.modules.defensive_vulnerability import DefensiveVulnerabilityDetector
@@ -18,9 +18,6 @@ from app.modules.tactical_decision import TacticalDecisionIntelligenceEngine
 from app.modules.sequence_comparison import SequenceComparisonEngine
 
 router = APIRouter(prefix="/comparison", tags=["Multi-Sequence Comparison"])
-
-DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data", "metrica_sample")
-data_manager = MatchDataManager(DATA_DIR)
 
 # Shared analytical engines
 pc_engine = PitchControlEngine()

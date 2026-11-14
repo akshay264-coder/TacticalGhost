@@ -8,7 +8,7 @@ import numpy as np
 from fastapi import APIRouter, HTTPException, Query, Body
 from pydantic import BaseModel
 
-from app.core.dataloader import MatchDataManager
+from app.api.routes_sequences import data_manager
 from app.core.pitch_control import PitchControlEngine
 from app.modules.space_creation import SpaceCreationAnalyzer
 from app.modules.defensive_vulnerability import DefensiveVulnerabilityDetector
@@ -17,9 +17,6 @@ from app.modules.player_interactions import PlayerInteractionAnalyzer
 from app.modules.tactical_decision import TacticalDecisionIntelligenceEngine
 
 router = APIRouter(prefix="/analytics", tags=["Tactical Analytics"])
-
-DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data", "metrica_sample")
-data_manager = MatchDataManager(DATA_DIR)
 
 # Shared analytical engines
 pc_engine = PitchControlEngine()
