@@ -35,6 +35,7 @@ import { PlayerInspectorModal } from './components/inspector/PlayerInspectorModa
 import { SequenceComparisonDashboard } from './components/comparison/SequenceComparisonDashboard';
 import { TacticalIntelligenceCentre } from './components/patterns/TacticalIntelligenceCentre';
 import { OpponentIntelligenceCentre } from './components/opponent/OpponentIntelligenceCentre';
+import { PlayerScoutingCentre } from './components/scouting/PlayerScoutingCentre';
 
 import {
   Shield,
@@ -46,7 +47,8 @@ import {
   AlertCircle,
   RefreshCw,
   GitCompare,
-  Compass
+  Compass,
+  Users
 } from 'lucide-react';
 
 const defaultLayerConfig: VisualizationLayersConfig = {
@@ -74,8 +76,9 @@ const defaultLayerConfig: VisualizationLayersConfig = {
 };
 
 export default function App() {
-  // Navigation mode: 'single' sequence analysis vs 'comparison' engine vs 'patterns' vs 'opponent'
-  const [appMode, setAppMode] = useState<'single' | 'comparison' | 'patterns' | 'opponent'>(() => {
+  // Navigation mode: 'single' sequence analysis vs 'comparison' engine vs 'patterns' vs 'opponent' vs 'scouting'
+  const [appMode, setAppMode] = useState<'single' | 'comparison' | 'patterns' | 'opponent' | 'scouting'>(() => {
+    if (window.location.search.includes('mode=scouting')) return 'scouting';
     if (window.location.search.includes('mode=opponent')) return 'opponent';
     if (window.location.search.includes('mode=comparison')) return 'comparison';
     if (window.location.search.includes('mode=patterns') || window.location.search.includes('mode=intelligence')) return 'patterns';
@@ -424,6 +427,17 @@ export default function App() {
               <Compass className="w-3.5 h-3.5 text-rose-400" />
               <span>Opponent Analysis</span>
             </button>
+            <button
+              onClick={() => setAppMode('scouting')}
+              className={`px-3 py-1 rounded text-xs font-semibold transition flex items-center space-x-1.5 ${
+                appMode === 'scouting'
+                  ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shadow-sm'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Users className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Player Scouting</span>
+            </button>
           </div>
         </div>
 
@@ -477,7 +491,9 @@ export default function App() {
 
       {/* Main Content Workspace */}
       <main className="flex-1 p-4 lg:p-6 max-w-[1600px] w-full mx-auto relative">
-        {appMode === 'opponent' ? (
+        {appMode === 'scouting' ? (
+          <PlayerScoutingCentre />
+        ) : appMode === 'opponent' ? (
           <OpponentIntelligenceCentre
             onJumpToSequence={handleJumpToSequence}
           />
