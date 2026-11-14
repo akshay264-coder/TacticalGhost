@@ -9,6 +9,7 @@ from app.api.routes_sequences import router as sequences_router
 from app.api.routes_analytics import router as analytics_router
 from app.api.routes_comparison import router as comparison_router
 from app.api.routes_patterns import router as patterns_router
+from app.api.routes_opponent import router as opponent_router
 
 app = FastAPI(
     title="TacticalGhost API",
@@ -33,6 +34,7 @@ app.include_router(sequences_router, prefix="/api")
 app.include_router(analytics_router, prefix="/api")
 app.include_router(comparison_router, prefix="/api")
 app.include_router(patterns_router, prefix="/api")
+app.include_router(opponent_router)
 
 
 @app.get("/api/health")
@@ -47,7 +49,8 @@ def health_check():
             "Pressing Intelligence",
             "Player Interaction Analysis",
             "Tactical Decision Intelligence",
-            "Commercial Tactical Pattern Intelligence"
+            "Commercial Tactical Pattern Intelligence",
+            "Multi-Match Opponent Intelligence"
         ]
     }
 

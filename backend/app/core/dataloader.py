@@ -131,13 +131,16 @@ def load_metrica_tracking_slice(
 class MatchDataManager:
     """
     Manages loading, caching, and serving synchronized match tracking sequences.
+    Supports multiple matches (e.g. metrica_game_1, metrica_game_2).
     """
 
-    def __init__(self, data_dir: str):
+    def __init__(self, data_dir: str, match_id: str = "metrica_game_1"):
         self.data_dir = data_dir
-        self.events_path = os.path.join(data_dir, "Sample_Game_1_RawEventsData.csv")
-        self.home_tracking_path = os.path.join(data_dir, "Sample_Game_1_RawTrackingData_Home_Team.csv")
-        self.away_tracking_path = os.path.join(data_dir, "Sample_Game_1_RawTrackingData_Away_Team.csv")
+        self.match_id = match_id
+        game_num = "2" if "2" in match_id else "1"
+        self.events_path = os.path.join(data_dir, f"Sample_Game_{game_num}_RawEventsData.csv")
+        self.home_tracking_path = os.path.join(data_dir, f"Sample_Game_{game_num}_RawTrackingData_Home_Team.csv")
+        self.away_tracking_path = os.path.join(data_dir, f"Sample_Game_{game_num}_RawTrackingData_Away_Team.csv")
 
         self._events_df: Optional[pd.DataFrame] = None
         self._curated_sequences: Optional[List[Dict[str, Any]]] = None
@@ -151,6 +154,75 @@ class MatchDataManager:
 
     def get_curated_sequences(self) -> List[Dict[str, Any]]:
         if self._curated_sequences is not None:
+            return self._curated_sequences
+
+        if "2" in self.match_id:
+            self._curated_sequences = [
+                {
+                    "sequence_id": "seq_g2_goal_home",
+                    "title": "Game 2 — Goal 1: Home Central Cutback & Box Strike",
+                    "match_id": "metrica_game_2",
+                    "period": 1,
+                    "start_frame": 12150,
+                    "end_frame": 12250,
+                    "start_time_s": 486.0,
+                    "end_time_s": 490.0,
+                    "duration_s": 4.0,
+                    "attacking_team": "Home",
+                    "defending_team": "Away",
+                    "key_events": ["PASS (P5 -> P10)", "SHOT / GOAL (P10)"],
+                    "tactical_theme": "Central cutback penetration into the penalty arc",
+                    "decision_frames": [12180, 12200]
+                },
+                {
+                    "sequence_id": "seq_g2_goal_away",
+                    "title": "Game 2 — Goal 2: Away Counter-Attack & Overload Penetration",
+                    "match_id": "metrica_game_2",
+                    "period": 1,
+                    "start_frame": 52980,
+                    "end_frame": 53090,
+                    "start_time_s": 2119.2,
+                    "end_time_s": 2123.6,
+                    "duration_s": 4.4,
+                    "attacking_team": "Away",
+                    "defending_team": "Home",
+                    "key_events": ["RECOVERY", "PASS", "SHOT / GOAL (P24)"],
+                    "tactical_theme": "Rapid transition exploiting high defensive line with diagonal run",
+                    "decision_frames": [53010, 53040]
+                },
+                {
+                    "sequence_id": "seq_g2_buildup_away",
+                    "title": "Game 2 — Away Build-Up & Wing Combination",
+                    "match_id": "metrica_game_2",
+                    "period": 1,
+                    "start_frame": 18450,
+                    "end_frame": 18550,
+                    "start_time_s": 738.0,
+                    "end_time_s": 742.0,
+                    "duration_s": 4.0,
+                    "attacking_team": "Away",
+                    "defending_team": "Home",
+                    "key_events": ["PASS", "PASS", "BLOCKED SHOT"],
+                    "tactical_theme": "Wide progression against organized mid-block",
+                    "decision_frames": [18480, 18510]
+                },
+                {
+                    "sequence_id": "seq_g2_header_home",
+                    "title": "Game 2 — Second Half Direct Transition & Header Goal",
+                    "match_id": "metrica_game_2",
+                    "period": 2,
+                    "start_frame": 73920,
+                    "end_frame": 74020,
+                    "start_time_s": 2956.8,
+                    "end_time_s": 2960.8,
+                    "duration_s": 4.0,
+                    "attacking_team": "Home",
+                    "defending_team": "Away",
+                    "key_events": ["CROSS", "HEAD-ON TARGET-GOAL (P9)"],
+                    "tactical_theme": "Cross into far post attacking vacated defensive gap",
+                    "decision_frames": [73950, 73980]
+                }
+            ]
             return self._curated_sequences
 
         self._curated_sequences = [
@@ -376,3 +448,17 @@ class MatchDataManager:
 
         self._tracking_cache[cache_key] = result
         return result
+
+
+_DATA_MANAGERS_REGISTRY: Dict[str, MatchDataManager] = {}
+
+
+def get_match_data_manager(data_dir: str, match_id: str = "metrica_game_1") -> MatchDataManager:
+    """
+    Returns or instantiates a singleton MatchDataManager for the requested match_id.
+    """
+    key = f"{data_dir}_{match_id}"
+    if key not in _DATA_MANAGERS_REGISTRY:
+        _DATA_MANAGERS_REGISTRY[key] = MatchDataManager(data_dir, match_id=match_id)
+    return _DATA_MANAGERS_REGISTRY[key]
+

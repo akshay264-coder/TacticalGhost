@@ -34,6 +34,7 @@ import { TacticalDecisionsPanel } from './components/modules/TacticalDecisionsPa
 import { PlayerInspectorModal } from './components/inspector/PlayerInspectorModal';
 import { SequenceComparisonDashboard } from './components/comparison/SequenceComparisonDashboard';
 import { TacticalIntelligenceCentre } from './components/patterns/TacticalIntelligenceCentre';
+import { OpponentIntelligenceCentre } from './components/opponent/OpponentIntelligenceCentre';
 
 import {
   Shield,
@@ -44,7 +45,8 @@ import {
   Loader2,
   AlertCircle,
   RefreshCw,
-  GitCompare
+  GitCompare,
+  Compass
 } from 'lucide-react';
 
 const defaultLayerConfig: VisualizationLayersConfig = {
@@ -72,8 +74,9 @@ const defaultLayerConfig: VisualizationLayersConfig = {
 };
 
 export default function App() {
-  // Navigation mode: 'single' sequence analysis vs 'comparison' engine vs 'patterns' intelligence centre
-  const [appMode, setAppMode] = useState<'single' | 'comparison' | 'patterns'>(() => {
+  // Navigation mode: 'single' sequence analysis vs 'comparison' engine vs 'patterns' vs 'opponent'
+  const [appMode, setAppMode] = useState<'single' | 'comparison' | 'patterns' | 'opponent'>(() => {
+    if (window.location.search.includes('mode=opponent')) return 'opponent';
     if (window.location.search.includes('mode=comparison')) return 'comparison';
     if (window.location.search.includes('mode=patterns') || window.location.search.includes('mode=intelligence')) return 'patterns';
     return 'single';
@@ -367,9 +370,9 @@ export default function App() {
             <div>
               <div className="flex items-center space-x-2">
                 <h1 className="font-bold text-lg text-slate-100 tracking-tight">TacticalGhost</h1>
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-amber-950/80 text-amber-400 border border-amber-800/60 flex items-center space-x-1">
-                  <Sparkles className="w-2.5 h-2.5" />
-                  <span>v1.6 Commercial Pattern Engine</span>
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-rose-950/80 text-rose-400 border border-rose-800/60 flex items-center space-x-1">
+                  <Compass className="w-2.5 h-2.5" />
+                  <span>v1.7 Opponent Intelligence</span>
                 </span>
               </div>
               <p className="text-xs text-slate-400">See the game beyond the ball.</p>
@@ -409,6 +412,17 @@ export default function App() {
             >
               <Sparkles className="w-3.5 h-3.5 text-amber-400" />
               <span>Intelligence Centre</span>
+            </button>
+            <button
+              onClick={() => setAppMode('opponent')}
+              className={`px-3 py-1 rounded text-xs font-semibold transition flex items-center space-x-1.5 ${
+                appMode === 'opponent'
+                  ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40 shadow-sm'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Compass className="w-3.5 h-3.5 text-rose-400" />
+              <span>Opponent Analysis</span>
             </button>
           </div>
         </div>
@@ -463,7 +477,11 @@ export default function App() {
 
       {/* Main Content Workspace */}
       <main className="flex-1 p-4 lg:p-6 max-w-[1600px] w-full mx-auto relative">
-        {appMode === 'patterns' ? (
+        {appMode === 'opponent' ? (
+          <OpponentIntelligenceCentre
+            onJumpToSequence={handleJumpToSequence}
+          />
+        ) : appMode === 'patterns' ? (
           <TacticalIntelligenceCentre
             onJumpToSequence={handleJumpToSequence}
           />

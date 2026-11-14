@@ -148,3 +148,100 @@ export async function fetchPatternComparison(seqA: string, seqB: string): Promis
 export function getCommercialBriefingHtmlUrl(): string {
   return `${BASE_URL}/patterns/briefing/html`;
 }
+
+// -------------------------------------------------------------
+// Phase 17: Multi-Match Opponent Intelligence & Analysis
+// -------------------------------------------------------------
+import {
+  MatchMetadata,
+  MatchCompatibilityScore,
+  OpponentTacticalProfile,
+  CrossMatchTacticalPattern,
+  OpponentWeakness,
+  OpponentStrength,
+  OpponentTacticalEvolutionReport,
+  OpponentSquadIntelligence,
+  OpponentPreparationStrategy
+} from '../types/opponent';
+
+export async function fetchRegisteredMatches(team?: string): Promise<MatchMetadata[]> {
+  const url = team ? `${BASE_URL}/opponent/matches?team=${team}` : `${BASE_URL}/opponent/matches`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Failed to load registered matches');
+  return res.json();
+}
+
+export async function fetchMatchCompatibility(matchIds: string): Promise<MatchCompatibilityScore> {
+  const res = await fetch(`${BASE_URL}/opponent/matches/compatibility?match_ids=${matchIds}`);
+  if (!res.ok) throw new Error('Failed to compute match compatibility');
+  return res.json();
+}
+
+export async function fetchOpponentProfile(team: string = 'Away', matches?: string): Promise<OpponentTacticalProfile> {
+  const url = matches
+    ? `${BASE_URL}/opponent/profile?team=${team}&matches=${matches}`
+    : `${BASE_URL}/opponent/profile?team=${team}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Failed to load tactical profile for ${team}`);
+  return res.json();
+}
+
+export async function fetchCrossMatchPatterns(team: string = 'Away', matches?: string): Promise<CrossMatchTacticalPattern[]> {
+  const url = matches
+    ? `${BASE_URL}/opponent/patterns?team=${team}&matches=${matches}`
+    : `${BASE_URL}/opponent/patterns?team=${team}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Failed to load cross-match patterns');
+  return res.json();
+}
+
+export async function fetchOpponentWeaknesses(team: string = 'Away', matches?: string): Promise<OpponentWeakness[]> {
+  const url = matches
+    ? `${BASE_URL}/opponent/weaknesses?team=${team}&matches=${matches}`
+    : `${BASE_URL}/opponent/weaknesses?team=${team}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Failed to load opponent weaknesses');
+  return res.json();
+}
+
+export async function fetchOpponentStrengths(team: string = 'Away', matches?: string): Promise<OpponentStrength[]> {
+  const url = matches
+    ? `${BASE_URL}/opponent/strengths?team=${team}&matches=${matches}`
+    : `${BASE_URL}/opponent/strengths?team=${team}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Failed to load opponent strengths');
+  return res.json();
+}
+
+export async function fetchTacticalEvolution(team: string = 'Away', matches?: string): Promise<OpponentTacticalEvolutionReport> {
+  const url = matches
+    ? `${BASE_URL}/opponent/evolution?team=${team}&matches=${matches}`
+    : `${BASE_URL}/opponent/evolution?team=${team}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Failed to load tactical evolution report');
+  return res.json();
+}
+
+export async function fetchOpponentSquad(team: string = 'Away', matches?: string): Promise<OpponentSquadIntelligence> {
+  const url = matches
+    ? `${BASE_URL}/opponent/players?team=${team}&matches=${matches}`
+    : `${BASE_URL}/opponent/players?team=${team}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Failed to load opponent squad intelligence');
+  return res.json();
+}
+
+export async function fetchPreparationStrategy(team: string = 'Away', matches?: string): Promise<OpponentPreparationStrategy> {
+  const url = matches
+    ? `${BASE_URL}/opponent/preparation?team=${team}&matches=${matches}`
+    : `${BASE_URL}/opponent/preparation?team=${team}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Failed to load tactical preparation strategy');
+  return res.json();
+}
+
+export function getCommercialOpponentBriefingHtmlUrl(team: string = 'Away', matches?: string): string {
+  return matches
+    ? `${BASE_URL}/opponent/report/html?team=${team}&matches=${matches}`
+    : `${BASE_URL}/opponent/report/html?team=${team}`;
+}
