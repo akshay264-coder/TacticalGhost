@@ -202,44 +202,44 @@ export const PlayerScoutingCentre: React.FC = () => {
   });
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 text-[#171717]">
       {/* Header bar */}
-      <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 backdrop-blur">
+      <div className="bg-white border border-[#E5E0D8] rounded-2xl p-6 shadow-sm">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center space-x-2 mb-1">
-              <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-cyan-950 text-cyan-400 border border-cyan-800">
+              <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#FEF3E8] text-[#F28C28] border border-[#FCD8B3]">
                 Phase 18 Intelligence
               </span>
-              <span className="text-xs text-slate-400">
+              <span className="text-xs text-[#525252]">
                 Official Metrica Telemetry • 25 Hz Optical Tracking
               </span>
             </div>
-            <h1 className="text-2xl font-black tracking-tight text-slate-100 flex items-center space-x-2">
-              <Sparkles className="w-6 h-6 text-cyan-400" />
+            <h1 className="text-2xl font-black tracking-tight text-[#171717] flex items-center space-x-2">
+              <Sparkles className="w-6 h-6 text-[#F28C28]" />
               <span>PLAYER SCOUTING & RECRUITMENT CENTRE</span>
             </h1>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-[#525252] mt-1">
               See the player beyond the ball: Discover off-ball space creators, decoy runners, and role-adjusted tactical fits.
             </p>
           </div>
 
           {/* Quick Stats / Shortlist count */}
-          <div className="flex items-center space-x-4 bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-2.5">
+          <div className="flex items-center space-x-4 bg-[#FAF7F2] border border-[#E5E0D8] rounded-xl px-4 py-2.5">
             <div>
-              <div className="text-[10px] uppercase font-bold text-slate-400">Profiled Roster</div>
-              <div className="text-lg font-black text-slate-100 font-mono">{players.length} Players</div>
+              <div className="text-[10px] uppercase font-bold text-[#525252]">Profiled Roster</div>
+              <div className="text-lg font-black text-[#171717] font-mono">{players.length} Players</div>
             </div>
-            <div className="h-8 w-px bg-slate-800" />
+            <div className="h-8 w-px bg-[#E5E0D8]" />
             <div>
-              <div className="text-[10px] uppercase font-bold text-cyan-400">Saved Shortlist</div>
-              <div className="text-lg font-black text-cyan-300 font-mono">{shortlist.length} Targets</div>
+              <div className="text-[10px] uppercase font-bold text-[#F28C28]">Saved Shortlist</div>
+              <div className="text-lg font-black text-[#F28C28] font-mono">{shortlist.length} Targets</div>
             </div>
           </div>
         </div>
 
         {/* Sub-Navigation Tabs */}
-        <div className="flex flex-wrap gap-1.5 mt-6 pt-4 border-t border-slate-800 text-xs font-bold">
+        <div className="flex flex-wrap gap-1.5 mt-6 pt-4 border-t border-[#E5E0D8] text-xs font-bold">
           {[
             { id: 'overview', label: 'Overview & Discovery', icon: Users },
             { id: 'profile', label: 'Tactical Profile & DNA', icon: Layers },
@@ -258,8 +258,8 @@ export const PlayerScoutingCentre: React.FC = () => {
                 onClick={() => setSubTab(tab.id as any)}
                 className={`px-3 py-2 rounded-xl flex items-center space-x-1.5 transition-all ${
                   active
-                    ? 'bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/20'
-                    : 'bg-slate-950/50 text-slate-400 hover:text-slate-200 hover:bg-slate-800 border border-slate-800/80'
+                    ? 'bg-[#F28C28] text-white shadow-sm font-bold'
+                    : 'bg-[#FAF7F2] text-[#525252] hover:text-[#171717] hover:bg-white border border-[#E5E0D8]'
                 }`}
               >
                 <Icon className="w-3.5 h-3.5" />

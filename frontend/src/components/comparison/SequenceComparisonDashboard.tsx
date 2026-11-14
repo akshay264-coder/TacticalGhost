@@ -147,20 +147,20 @@ export const SequenceComparisonDashboard: React.FC<SequenceComparisonDashboardPr
   return (
     <div className="space-y-5">
       {/* Top Header: Comparison Mode Control Bar */}
-      <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-4 shadow-xl flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-white border border-[#E5E0D8] rounded-2xl p-4 shadow-sm flex flex-wrap items-center justify-between gap-4 text-[#171717]">
         <div className="flex flex-wrap items-center gap-4">
-          <div className="flex items-center space-x-2 text-cyan-400 font-bold text-sm">
-            <GitCompare className="w-5 h-5" />
+          <div className="flex items-center space-x-2 text-[#171717] font-bold text-sm">
+            <GitCompare className="w-5 h-5 text-[#F28C28]" />
             <span>Multi-Sequence Comparison</span>
           </div>
 
           {/* Sequence A Selector */}
           <div className="flex items-center space-x-2">
-            <span className="text-xs font-bold text-blue-400 uppercase">Seq A:</span>
+            <span className="text-xs font-bold text-blue-600 uppercase">Seq A:</span>
             <select
               value={seqAId}
               onChange={(e) => setSeqAId(e.target.value)}
-              className="bg-slate-950 border border-blue-500/50 text-slate-200 text-xs rounded-lg px-2.5 py-1.5 focus:outline-none"
+              className="bg-[#FAF7F2] border border-[#E5E0D8] text-[#171717] text-xs rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-[#F28C28]"
             >
               {sequences.map(s => (
                 <option key={s.sequence_id} value={s.sequence_id} disabled={s.sequence_id === seqBId}>
@@ -172,11 +172,11 @@ export const SequenceComparisonDashboard: React.FC<SequenceComparisonDashboardPr
 
           {/* Sequence B Selector */}
           <div className="flex items-center space-x-2">
-            <span className="text-xs font-bold text-red-400 uppercase">Seq B:</span>
+            <span className="text-xs font-bold text-red-600 uppercase">Seq B:</span>
             <select
               value={seqBId}
               onChange={(e) => setSeqBId(e.target.value)}
-              className="bg-slate-950 border border-red-500/50 text-slate-200 text-xs rounded-lg px-2.5 py-1.5 focus:outline-none"
+              className="bg-[#FAF7F2] border border-[#E5E0D8] text-[#171717] text-xs rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-[#F28C28]"
             >
               {sequences.map(s => (
                 <option key={s.sequence_id} value={s.sequence_id} disabled={s.sequence_id === seqAId}>
@@ -190,12 +190,12 @@ export const SequenceComparisonDashboard: React.FC<SequenceComparisonDashboardPr
         {/* Action Controls */}
         <div className="flex items-center space-x-3">
           {/* Synchronize Playback Toggle */}
-          <label className="flex items-center space-x-1.5 text-xs text-slate-300 cursor-pointer">
+          <label className="flex items-center space-x-1.5 text-xs text-[#525252] cursor-pointer">
             <input
               type="checkbox"
               checked={syncPlayback}
               onChange={(e) => setSyncPlayback(e.target.checked)}
-              className="rounded bg-slate-950 border-slate-700 text-cyan-500 focus:ring-0"
+              className="rounded bg-white border-[#E5E0D8] text-[#F28C28] focus:ring-0 accent-[#F28C28]"
             />
             <span className="text-[11px] font-medium">Sync Playback</span>
           </label>
@@ -203,7 +203,7 @@ export const SequenceComparisonDashboard: React.FC<SequenceComparisonDashboardPr
           {/* Play/Pause Button */}
           <button
             onClick={() => setIsPlaying(!isPlaying)}
-            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs transition shadow-sm"
+            className="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl bg-[#F28C28] hover:bg-[#E07B18] text-white font-bold text-xs transition shadow-sm"
           >
             {isPlaying ? <Pause className="w-3.5 h-3.5 fill-current" /> : <Play className="w-3.5 h-3.5 fill-current" />}
             <span>{isPlaying ? 'Pause' : 'Play Both'}</span>
@@ -214,16 +214,16 @@ export const SequenceComparisonDashboard: React.FC<SequenceComparisonDashboardPr
             href={reportUrl}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-xs transition shadow-sm"
+            className="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl bg-white hover:bg-[#FAF7F2] text-[#171717] border border-[#E5E0D8] font-semibold text-xs transition shadow-sm"
           >
-            <Printer className="w-3.5 h-3.5" />
+            <Printer className="w-3.5 h-3.5 text-[#F28C28]" />
             <span>Export Report (PDF / HTML)</span>
           </a>
         </div>
       </div>
 
       {/* Comparative View Sub-Navigation */}
-      <div className="flex border-b border-slate-800 space-x-2 text-xs font-medium">
+      <div className="flex border-b border-[#E5E0D8] space-x-2 text-xs font-medium">
         {[
           { id: 'visual', label: 'Side-by-Side Visual Pitch', icon: Layers },
           { id: 'spatial', label: 'Spatial & Defensive Matrix', icon: Shield },
@@ -238,8 +238,8 @@ export const SequenceComparisonDashboard: React.FC<SequenceComparisonDashboardPr
               onClick={() => setComparisonTab(tab.id as any)}
               className={`flex items-center space-x-2 px-4 py-2.5 border-b-2 font-semibold transition ${
                 comparisonTab === tab.id
-                  ? 'border-cyan-400 text-cyan-300 bg-cyan-950/20'
-                  : 'border-transparent text-slate-400 hover:text-slate-200'
+                  ? 'border-[#F28C28] text-[#F28C28] bg-[#FEF3E8] rounded-t-lg font-bold'
+                  : 'border-transparent text-[#525252] hover:text-[#171717]'
               }`}
             >
               <Icon className="w-4 h-4" />

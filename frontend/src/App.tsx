@@ -36,6 +36,8 @@ import { SequenceComparisonDashboard } from './components/comparison/SequenceCom
 import { TacticalIntelligenceCentre } from './components/patterns/TacticalIntelligenceCentre';
 import { OpponentIntelligenceCentre } from './components/opponent/OpponentIntelligenceCentre';
 import { PlayerScoutingCentre } from './components/scouting/PlayerScoutingCentre';
+import { CoachDecisionCentre } from './components/coach/CoachDecisionCentre';
+import { ReportingCentre } from './components/reporting/ReportingCentre';
 
 import {
   Shield,
@@ -48,8 +50,13 @@ import {
   RefreshCw,
   GitCompare,
   Compass,
-  Users
+  Users,
+  BrainCircuit,
+  FileText,
+  LayoutDashboard,
+  Activity
 } from 'lucide-react';
+import { MainDashboard } from './components/dashboard/MainDashboard';
 
 const defaultLayerConfig: VisualizationLayersConfig = {
   showPitchControl: true,
@@ -76,13 +83,16 @@ const defaultLayerConfig: VisualizationLayersConfig = {
 };
 
 export default function App() {
-  // Navigation mode: 'single' sequence analysis vs 'comparison' engine vs 'patterns' vs 'opponent' vs 'scouting'
-  const [appMode, setAppMode] = useState<'single' | 'comparison' | 'patterns' | 'opponent' | 'scouting'>(() => {
+  // Navigation mode: 'dashboard' vs 'single' pitch vs 'comparison' vs 'patterns' vs 'opponent' vs 'scouting' vs 'coach' vs 'reports'
+  const [appMode, setAppMode] = useState<'dashboard' | 'single' | 'comparison' | 'patterns' | 'opponent' | 'scouting' | 'coach' | 'reports'>(() => {
+    if (window.location.search.includes('mode=reports') || window.location.search.includes('mode=reporting')) return 'reports';
+    if (window.location.search.includes('mode=coach')) return 'coach';
     if (window.location.search.includes('mode=scouting')) return 'scouting';
     if (window.location.search.includes('mode=opponent')) return 'opponent';
     if (window.location.search.includes('mode=comparison')) return 'comparison';
     if (window.location.search.includes('mode=patterns') || window.location.search.includes('mode=intelligence')) return 'patterns';
-    return 'single';
+    if (window.location.search.includes('mode=single') || window.location.search.includes('mode=pitch')) return 'single';
+    return 'dashboard';
   });
 
   // Sequences state
@@ -362,111 +372,147 @@ export default function App() {
   const currentDecisionEval = decisionsData.find(d => Math.abs(d.decision_frame - (currentFrame?.frame || 0)) <= 3) || decisionsData[0] || null;
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-[#F5F0E6] text-[#171717] flex flex-col font-sans">
       {/* Top Header */}
-      <header className="bg-slate-900/90 border-b border-slate-800 px-6 py-3.5 flex items-center justify-between sticky top-0 z-40 backdrop-blur">
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-2.5">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-600 to-blue-500 flex items-center justify-center font-bold text-slate-950 text-base shadow-lg shadow-cyan-500/20">
+      <header className="bg-white/95 border-b border-[#E5E0D8] px-4 sm:px-6 py-2.5 flex items-center justify-between sticky top-0 z-40 backdrop-blur shadow-sm">
+        <div className="flex items-center space-x-3 sm:space-x-4">
+          <div className="flex items-center space-x-2.5 cursor-pointer" onClick={() => setAppMode('dashboard')}>
+            <div className="w-8 h-8 rounded-lg bg-[#F28C28] flex items-center justify-center font-black text-white text-base shadow-sm">
               TG
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <h1 className="font-bold text-lg text-slate-100 tracking-tight">TacticalGhost</h1>
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-rose-950/80 text-rose-400 border border-rose-800/60 flex items-center space-x-1">
-                  <Compass className="w-2.5 h-2.5" />
-                  <span>v1.7 Opponent Intelligence</span>
+                <h1 className="font-extrabold text-base sm:text-lg text-[#171717] tracking-tight">TacticalGhost</h1>
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-[#FEF3E8] text-[#F28C28] border border-[#FCD8B3] flex items-center space-x-1">
+                  <span>Portfolio Edition</span>
                 </span>
               </div>
-              <p className="text-xs text-slate-400">See the game beyond the ball.</p>
+              <p className="text-[11px] text-[#525252] font-medium hidden sm:block">See the game beyond the ball.</p>
             </div>
           </div>
 
           {/* Mode Switcher */}
-          <div className="hidden sm:flex items-center rounded-lg bg-slate-950 p-1 border border-slate-800">
+          <nav className="flex items-center rounded-xl bg-[#FAF7F2] p-1 border border-[#E5E0D8] overflow-x-auto max-w-[calc(100vw-220px)] scrollbar-none">
             <button
-              onClick={() => setAppMode('single')}
-              className={`px-3 py-1 rounded text-xs font-semibold transition ${
-                appMode === 'single'
-                  ? 'bg-cyan-500/10 text-cyan-300 border border-cyan-500/40 shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200'
+              onClick={() => setAppMode('dashboard')}
+              className={`px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 whitespace-nowrap ${
+                appMode === 'dashboard'
+                  ? 'bg-white text-[#171717] shadow-sm border border-[#E5E0D8]'
+                  : 'text-[#525252] hover:text-[#171717]'
               }`}
             >
-              Single Sequence
+              <LayoutDashboard className={`w-3.5 h-3.5 ${appMode === 'dashboard' ? 'text-[#F28C28]' : ''}`} />
+              <span>Overview</span>
+            </button>
+            <button
+              onClick={() => setAppMode('single')}
+              className={`px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 whitespace-nowrap ${
+                appMode === 'single'
+                  ? 'bg-white text-[#171717] shadow-sm border border-[#E5E0D8]'
+                  : 'text-[#525252] hover:text-[#171717]'
+              }`}
+            >
+              <Activity className={`w-3.5 h-3.5 ${appMode === 'single' ? 'text-[#F28C28]' : ''}`} />
+              <span>Match Pitch</span>
             </button>
             <button
               onClick={() => setAppMode('comparison')}
-              className={`px-3 py-1 rounded text-xs font-semibold transition flex items-center space-x-1.5 ${
+              className={`px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 whitespace-nowrap ${
                 appMode === 'comparison'
-                  ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40 shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200'
+                  ? 'bg-white text-[#171717] shadow-sm border border-[#E5E0D8]'
+                  : 'text-[#525252] hover:text-[#171717]'
               }`}
             >
-              <GitCompare className="w-3.5 h-3.5" />
-              <span>Comparison Engine</span>
+              <GitCompare className={`w-3.5 h-3.5 ${appMode === 'comparison' ? 'text-[#F28C28]' : ''}`} />
+              <span>Comparison</span>
             </button>
             <button
               onClick={() => setAppMode('patterns')}
-              className={`px-3 py-1 rounded text-xs font-semibold transition flex items-center space-x-1.5 ${
+              className={`px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 whitespace-nowrap ${
                 appMode === 'patterns'
-                  ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200'
+                  ? 'bg-white text-[#171717] shadow-sm border border-[#E5E0D8]'
+                  : 'text-[#525252] hover:text-[#171717]'
               }`}
             >
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-              <span>Intelligence Centre</span>
+              <Sparkles className={`w-3.5 h-3.5 ${appMode === 'patterns' ? 'text-[#F28C28]' : ''}`} />
+              <span>Patterns</span>
             </button>
             <button
               onClick={() => setAppMode('opponent')}
-              className={`px-3 py-1 rounded text-xs font-semibold transition flex items-center space-x-1.5 ${
+              className={`px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 whitespace-nowrap ${
                 appMode === 'opponent'
-                  ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40 shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200'
+                  ? 'bg-white text-[#171717] shadow-sm border border-[#E5E0D8]'
+                  : 'text-[#525252] hover:text-[#171717]'
               }`}
             >
-              <Compass className="w-3.5 h-3.5 text-rose-400" />
-              <span>Opponent Analysis</span>
+              <Compass className={`w-3.5 h-3.5 ${appMode === 'opponent' ? 'text-[#F28C28]' : ''}`} />
+              <span>Opponent</span>
             </button>
             <button
               onClick={() => setAppMode('scouting')}
-              className={`px-3 py-1 rounded text-xs font-semibold transition flex items-center space-x-1.5 ${
+              className={`px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 whitespace-nowrap ${
                 appMode === 'scouting'
-                  ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200'
+                  ? 'bg-white text-[#171717] shadow-sm border border-[#E5E0D8]'
+                  : 'text-[#525252] hover:text-[#171717]'
               }`}
             >
-              <Users className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Player Scouting</span>
+              <Users className={`w-3.5 h-3.5 ${appMode === 'scouting' ? 'text-[#F28C28]' : ''}`} />
+              <span>Scouting</span>
             </button>
-          </div>
+            <button
+              onClick={() => setAppMode('coach')}
+              className={`px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 whitespace-nowrap ${
+                appMode === 'coach'
+                  ? 'bg-white text-[#171717] shadow-sm border border-[#E5E0D8]'
+                  : 'text-[#525252] hover:text-[#171717]'
+              }`}
+            >
+              <BrainCircuit className={`w-3.5 h-3.5 ${appMode === 'coach' ? 'text-[#F28C28]' : ''}`} />
+              <span>Coach Decision</span>
+            </button>
+            <button
+              onClick={() => setAppMode('reports')}
+              className={`px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 whitespace-nowrap ${
+                appMode === 'reports'
+                  ? 'bg-white text-[#171717] shadow-sm border border-[#E5E0D8]'
+                  : 'text-[#525252] hover:text-[#171717]'
+              }`}
+            >
+              <FileText className={`w-3.5 h-3.5 ${appMode === 'reports' ? 'text-[#F28C28]' : ''}`} />
+              <span>Reporting</span>
+            </button>
+          </nav>
         </div>
 
         {/* Live HUD Quick Indicators */}
         {currentFrame && (
-          <div className="hidden md:flex items-center space-x-6 text-xs font-mono">
+          <div className="hidden xl:flex items-center space-x-4 text-xs font-mono bg-[#FAF7F2] px-3 py-1 rounded-lg border border-[#E5E0D8]">
             <div>
-              <span className="text-slate-500 text-[10px] block uppercase">Pitch Control</span>
-              <span className="text-blue-400 font-bold">{pitchControlSurface?.home_pitch_control_pct ?? 50}%</span>
-              <span className="text-slate-500 mx-1">/</span>
-              <span className="text-red-400 font-bold">{pitchControlSurface?.away_pitch_control_pct ?? 50}%</span>
+              <span className="text-[#525252] text-[9px] block uppercase font-sans">Pitch Control</span>
+              <span className="text-blue-600 font-bold">{pitchControlSurface?.home_pitch_control_pct ?? 50}%</span>
+              <span className="text-[#525252] mx-1">/</span>
+              <span className="text-red-600 font-bold">{pitchControlSurface?.away_pitch_control_pct ?? 50}%</span>
             </div>
+            <div className="h-4 w-px bg-[#E5E0D8]" />
             <div>
-              <span className="text-slate-500 text-[10px] block uppercase">Defending Team</span>
-              <span className={`font-bold ${layersConfig.defendingTeam === 'Home' ? 'text-blue-400' : 'text-red-400'}`}>
+              <span className="text-[#525252] text-[9px] block uppercase font-sans">Defending</span>
+              <span className={`font-bold ${layersConfig.defendingTeam === 'Home' ? 'text-blue-600' : 'text-red-600'}`}>
                 {layersConfig.defendingTeam}
               </span>
             </div>
+            <div className="h-4 w-px bg-[#E5E0D8]" />
             <div>
-              <span className="text-slate-500 text-[10px] block uppercase">Carrier Pressure</span>
+              <span className="text-[#525252] text-[9px] block uppercase font-sans">Carrier Pressure</span>
               <span className={`font-bold ${
-                (pressingAnalysis?.pressure.total_pressure_score ?? 0) > 0.6 ? 'text-rose-400' : 'text-emerald-400'
+                (pressingAnalysis?.pressure.total_pressure_score ?? 0) > 0.6 ? 'text-rose-600' : 'text-emerald-600'
               }`}>
                 {Math.round((pressingAnalysis?.pressure.total_pressure_score ?? 0) * 100)}%
               </span>
             </div>
+            <div className="h-4 w-px bg-[#E5E0D8]" />
             <div>
-              <span className="text-slate-500 text-[10px] block uppercase">Def Line Height</span>
-              <span className="text-amber-400 font-bold">{defensiveAnalysis?.defensive_line_height_m ?? 0}m</span>
+              <span className="text-[#525252] text-[9px] block uppercase font-sans">Line Height</span>
+              <span className="text-[#F28C28] font-bold">{defensiveAnalysis?.defensive_line_height_m ?? 0}m</span>
             </div>
           </div>
         )}
@@ -474,14 +520,14 @@ export default function App() {
 
       {/* Error Banner */}
       {error && (
-        <div className="bg-rose-950/80 border-b border-rose-800 px-6 py-2.5 flex items-center justify-between text-xs text-rose-200">
+        <div className="bg-rose-50 border-b border-rose-200 px-6 py-2.5 flex items-center justify-between text-xs text-rose-800">
           <div className="flex items-center space-x-2">
-            <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
+            <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" />
             <span>{error}</span>
           </div>
           <button
             onClick={loadInitialSequences}
-            className="flex items-center space-x-1 px-2.5 py-1 rounded bg-rose-900/80 hover:bg-rose-800 text-rose-100 font-medium transition"
+            className="flex items-center space-x-1 px-2.5 py-1 rounded bg-rose-100 hover:bg-rose-200 text-rose-800 font-medium transition"
           >
             <RefreshCw className="w-3 h-3" />
             <span>Retry</span>
@@ -491,7 +537,13 @@ export default function App() {
 
       {/* Main Content Workspace */}
       <main className="flex-1 p-4 lg:p-6 max-w-[1600px] w-full mx-auto relative">
-        {appMode === 'scouting' ? (
+        {appMode === 'dashboard' ? (
+          <MainDashboard onNavigate={setAppMode} sequencesCount={sequences.length} />
+        ) : appMode === 'reports' ? (
+          <ReportingCentre />
+        ) : appMode === 'coach' ? (
+          <CoachDecisionCentre />
+        ) : appMode === 'scouting' ? (
           <PlayerScoutingCentre />
         ) : appMode === 'opponent' ? (
           <OpponentIntelligenceCentre
@@ -571,74 +623,74 @@ export default function App() {
             </div>
 
             {/* Right Column: Tactical Intelligence Dock (5 Core Modules) */}
-            <div className="lg:col-span-5 xl:col-span-4 flex flex-col space-y-3 bg-slate-900/80 border border-slate-800 rounded-2xl p-4 shadow-xl">
+            <div className="lg:col-span-5 xl:col-span-4 flex flex-col space-y-3 bg-white border border-[#E5E0D8] rounded-2xl p-4 shadow-sm text-[#171717]">
               {/* Module Selection Navigation Tabs */}
-              <div className="grid grid-cols-5 gap-1 p-1 bg-slate-950 rounded-xl border border-slate-800 text-xs font-medium">
+              <div className="grid grid-cols-5 gap-1 p-1 bg-[#FAF7F2] rounded-xl border border-[#E5E0D8] text-xs font-medium">
                 <button
                   onClick={() => setActiveTab('space_creation')}
                   className={`p-2 rounded-lg flex flex-col items-center justify-center space-y-1 transition ${
                     activeTab === 'space_creation'
-                      ? 'bg-cyan-950 text-cyan-300 border border-cyan-600/70 shadow'
-                      : 'text-slate-400 hover:text-slate-200'
+                      ? 'bg-white text-[#171717] border border-[#E5E0D8] shadow-sm font-bold'
+                      : 'text-[#525252] hover:text-[#171717]'
                   }`}
                   title="Space Creation Intelligence (Key 1)"
                 >
-                  <Sparkles className="w-4 h-4" />
+                  <Sparkles className={`w-4 h-4 ${activeTab === 'space_creation' ? 'text-[#F28C28]' : ''}`} />
                   <span className="text-[10px] tracking-tight">Space</span>
                 </button>
                 <button
                   onClick={() => setActiveTab('defensive_vulnerability')}
                   className={`p-2 rounded-lg flex flex-col items-center justify-center space-y-1 transition ${
                     activeTab === 'defensive_vulnerability'
-                      ? 'bg-rose-950 text-rose-300 border border-rose-600/70 shadow'
-                      : 'text-slate-400 hover:text-slate-200'
+                      ? 'bg-white text-[#171717] border border-[#E5E0D8] shadow-sm font-bold'
+                      : 'text-[#525252] hover:text-[#171717]'
                   }`}
                   title="Defensive Vulnerability Detection (Key 2)"
                 >
-                  <Shield className="w-4 h-4" />
+                  <Shield className={`w-4 h-4 ${activeTab === 'defensive_vulnerability' ? 'text-[#F28C28]' : ''}`} />
                   <span className="text-[10px] tracking-tight">Defense</span>
                 </button>
                 <button
                   onClick={() => setActiveTab('pressing')}
                   className={`p-2 rounded-lg flex flex-col items-center justify-center space-y-1 transition ${
                     activeTab === 'pressing'
-                      ? 'bg-orange-950 text-orange-300 border border-orange-600/70 shadow'
-                      : 'text-slate-400 hover:text-slate-200'
+                      ? 'bg-white text-[#171717] border border-[#E5E0D8] shadow-sm font-bold'
+                      : 'text-[#525252] hover:text-[#171717]'
                   }`}
                   title="Pressing Intelligence (Key 3)"
                 >
-                  <Target className="w-4 h-4" />
+                  <Target className={`w-4 h-4 ${activeTab === 'pressing' ? 'text-[#F28C28]' : ''}`} />
                   <span className="text-[10px] tracking-tight">Pressing</span>
                 </button>
                 <button
                   onClick={() => setActiveTab('player_interactions')}
                   className={`p-2 rounded-lg flex flex-col items-center justify-center space-y-1 transition ${
                     activeTab === 'player_interactions'
-                      ? 'bg-emerald-950 text-emerald-300 border border-emerald-600/70 shadow'
-                      : 'text-slate-400 hover:text-slate-200'
+                      ? 'bg-white text-[#171717] border border-[#E5E0D8] shadow-sm font-bold'
+                      : 'text-[#525252] hover:text-[#171717]'
                   }`}
                   title="Player Interaction Analysis (Key 4)"
                 >
-                  <Share2 className="w-4 h-4" />
+                  <Share2 className={`w-4 h-4 ${activeTab === 'player_interactions' ? 'text-[#F28C28]' : ''}`} />
                   <span className="text-[10px] tracking-tight">Lanes</span>
                 </button>
                 <button
                   onClick={() => setActiveTab('tactical_decisions')}
                   className={`p-2 rounded-lg flex flex-col items-center justify-center space-y-1 transition ${
                     activeTab === 'tactical_decisions'
-                      ? 'bg-purple-950 text-purple-300 border border-purple-600/70 shadow'
-                      : 'text-slate-400 hover:text-slate-200'
+                      ? 'bg-white text-[#171717] border border-[#E5E0D8] shadow-sm font-bold'
+                      : 'text-[#525252] hover:text-[#171717]'
                   }`}
                   title="Tactical Decision Intelligence (Key 5)"
                 >
-                  <Shuffle className="w-4 h-4" />
+                  <Shuffle className={`w-4 h-4 ${activeTab === 'tactical_decisions' ? 'text-[#F28C28]' : ''}`} />
                   <span className="text-[10px] tracking-tight">Decisions</span>
                 </button>
               </div>
 
               {/* Module Tab Header */}
-              <div className="flex items-center justify-between border-b border-slate-800/80 pb-2 pt-1">
-                <h3 className="font-bold text-sm text-slate-200 flex items-center space-x-2">
+              <div className="flex items-center justify-between border-b border-[#E5E0D8] pb-2 pt-1">
+                <h3 className="font-bold text-sm text-[#171717] flex items-center space-x-2">
                   {activeTab === 'space_creation' && <span>Module 1: Space Creation Intelligence</span>}
                   {activeTab === 'defensive_vulnerability' && <span>Module 2: Defensive Vulnerability Detection</span>}
                   {activeTab === 'pressing' && <span>Module 3: Pressing Intelligence</span>}
@@ -648,7 +700,7 @@ export default function App() {
               </div>
 
               {/* Tab Content Panels */}
-              <div className="flex-1 overflow-y-auto max-h-[600px] pr-1 scrollbar-thin scrollbar-thumb-slate-800">
+              <div className="flex-1 overflow-y-auto max-h-[600px] pr-1">
                 {activeTab === 'space_creation' && (
                   <SpaceCreationPanel
                     data={spaceData}

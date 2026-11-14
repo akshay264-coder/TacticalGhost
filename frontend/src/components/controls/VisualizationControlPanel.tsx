@@ -34,15 +34,15 @@ export const VisualizationControlPanel: React.FC<VisualizationControlPanelProps>
   const [activeSection, setActiveSection] = useState<'all' | 'pitch_control' | 'kinematics' | 'defense' | 'passing'>('all');
 
   return (
-    <div className="bg-slate-900/90 backdrop-blur border border-slate-800 rounded-xl shadow-xl overflow-hidden transition-all duration-200">
+    <div className="bg-white border border-[#E5E0D8] rounded-2xl shadow-sm overflow-hidden transition-all duration-200 text-[#171717]">
       {/* Header bar */}
-      <div className="px-4 py-2.5 flex items-center justify-between border-b border-slate-800/80 bg-slate-950/40">
+      <div className="px-4 py-2.5 flex items-center justify-between border-b border-[#E5E0D8] bg-[#FAF7F2]">
         <div className="flex items-center space-x-2.5">
-          <Layers className="w-4 h-4 text-cyan-400" />
-          <span className="text-xs font-bold uppercase tracking-wider text-slate-200">
+          <Layers className="w-4 h-4 text-[#F28C28]" />
+          <span className="text-xs font-bold uppercase tracking-wider text-[#171717]">
             Tactical Visualization Layers
           </span>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950/80 text-cyan-300 border border-cyan-800/50">
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#FEF3E8] text-[#F28C28] border border-[#FCD8B3] font-bold">
             Interactive HUD
           </span>
         </div>
@@ -50,14 +50,14 @@ export const VisualizationControlPanel: React.FC<VisualizationControlPanelProps>
         <div className="flex items-center space-x-2">
           <button
             onClick={onResetDefaults}
-            className="text-[11px] text-slate-400 hover:text-slate-200 hover:underline px-2 py-0.5"
+            className="text-[11px] text-[#525252] hover:text-[#171717] hover:underline px-2 py-0.5"
             title="Reset to default layers"
           >
             Reset
           </button>
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="p-1 rounded text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition"
+            className="p-1 rounded text-[#525252] hover:text-[#171717] hover:bg-white border border-transparent hover:border-[#E5E0D8] transition"
             title={isExpanded ? 'Collapse layers' : 'Expand layers'}
           >
             {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -69,7 +69,7 @@ export const VisualizationControlPanel: React.FC<VisualizationControlPanelProps>
       {isExpanded && (
         <div className="p-3.5 space-y-3.5 text-xs">
           {/* Quick Category Tabs */}
-          <div className="flex flex-wrap gap-1 border-b border-slate-800/60 pb-2">
+          <div className="flex flex-wrap gap-1 border-b border-[#E5E0D8] pb-2">
             {[
               { id: 'all', label: 'All Layers' },
               { id: 'pitch_control', label: 'Pitch Control' },
@@ -80,10 +80,10 @@ export const VisualizationControlPanel: React.FC<VisualizationControlPanelProps>
               <button
                 key={tab.id}
                 onClick={() => setActiveSection(tab.id as any)}
-                className={`px-2.5 py-1 rounded text-[11px] font-medium transition ${
+                className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition ${
                   activeSection === tab.id
-                    ? 'bg-cyan-500/10 text-cyan-300 border border-cyan-500/30'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                    ? 'bg-[#F28C28] text-white font-bold shadow-sm'
+                    : 'bg-[#FAF7F2] text-[#525252] hover:text-[#171717] border border-[#E5E0D8]'
                 }`}
               >
                 {tab.label}
@@ -93,36 +93,36 @@ export const VisualizationControlPanel: React.FC<VisualizationControlPanelProps>
 
           {/* Section 1: Pitch Control Surface */}
           {(activeSection === 'all' || activeSection === 'pitch_control') && (
-            <div className="bg-slate-950/60 rounded-lg p-3 border border-slate-800/80 space-y-2.5">
+            <div className="bg-[#FAF7F2] rounded-xl p-3 border border-[#E5E0D8] space-y-2.5">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <Eye className="w-3.5 h-3.5 text-blue-400" />
-                  <span className="font-semibold text-slate-200">Pitch Control Heatmap</span>
+                  <Eye className="w-3.5 h-3.5 text-blue-600" />
+                  <span className="font-bold text-[#171717]">Pitch Control Heatmap</span>
                 </div>
                 <input
                   type="checkbox"
                   checked={config.showPitchControl}
                   onChange={(e) => onChangeConfig({ showPitchControl: e.target.checked })}
-                  className="rounded border-slate-700 bg-slate-900 text-cyan-500 focus:ring-0 cursor-pointer"
+                  className="rounded border-[#E5E0D8] bg-white accent-[#F28C28] focus:ring-0 cursor-pointer"
                 />
               </div>
 
               {config.showPitchControl && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1 border-t border-slate-800/50">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1 border-t border-[#E5E0D8]">
                   {/* Mode Selector */}
                   <div>
-                    <label className="text-[10px] text-slate-400 block mb-1 uppercase font-semibold">
+                    <label className="text-[10px] text-[#525252] block mb-1 uppercase font-semibold">
                       Control Surface Mode
                     </label>
-                    <div className="flex rounded border border-slate-800 bg-slate-900 p-0.5">
+                    <div className="flex rounded-lg border border-[#E5E0D8] bg-white p-0.5">
                       {(['dual', 'home', 'away', 'contested'] as PitchControlMode[]).map((mode) => (
                         <button
                           key={mode}
                           onClick={() => onChangeConfig({ pitchControlMode: mode })}
                           className={`flex-1 py-1 text-[10px] uppercase font-bold rounded transition capitalize ${
                             config.pitchControlMode === mode
-                              ? 'bg-blue-600 text-white shadow-sm'
-                              : 'text-slate-400 hover:text-slate-200'
+                              ? 'bg-[#F28C28] text-white shadow-sm'
+                              : 'text-[#525252] hover:text-[#171717]'
                           }`}
                         >
                           {mode}
@@ -133,9 +133,9 @@ export const VisualizationControlPanel: React.FC<VisualizationControlPanelProps>
 
                   {/* Opacity Slider */}
                   <div>
-                    <div className="flex justify-between items-center text-[10px] text-slate-400 mb-1">
+                    <div className="flex justify-between items-center text-[10px] text-[#525252] mb-1">
                       <span className="uppercase font-semibold">Heatmap Opacity</span>
-                      <span className="font-mono text-cyan-400 font-bold">
+                      <span className="font-mono text-[#F28C28] font-bold">
                         {Math.round(config.pitchControlOpacity * 100)}%
                       </span>
                     </div>
@@ -146,7 +146,7 @@ export const VisualizationControlPanel: React.FC<VisualizationControlPanelProps>
                       step={0.05}
                       value={config.pitchControlOpacity}
                       onChange={(e) => onChangeConfig({ pitchControlOpacity: parseFloat(e.target.value) })}
-                      className="w-full h-1.5 bg-slate-800 rounded appearance-none cursor-pointer accent-cyan-500"
+                      className="w-full h-1.5 bg-[#E5E0D8] rounded appearance-none cursor-pointer accent-[#F28C28]"
                     />
                   </div>
                 </div>
@@ -156,28 +156,28 @@ export const VisualizationControlPanel: React.FC<VisualizationControlPanelProps>
 
           {/* Section 2: Player Movement & Kinematics */}
           {(activeSection === 'all' || activeSection === 'kinematics') && (
-            <div className="bg-slate-950/60 rounded-lg p-3 border border-slate-800/80 space-y-2.5">
+            <div className="bg-[#FAF7F2] rounded-xl p-3 border border-[#E5E0D8] space-y-2.5">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <Activity className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="font-semibold text-slate-200">Player Movement & Kinematics</span>
+                  <Activity className="w-3.5 h-3.5 text-emerald-600" />
+                  <span className="font-bold text-[#171717]">Player Movement & Kinematics</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2 pt-1">
                 {/* Movement Trails */}
-                <label className="flex items-center space-x-2 p-2 rounded bg-slate-900/60 border border-slate-800 cursor-pointer hover:border-slate-700">
+                <label className="flex items-center space-x-2 p-2 rounded-lg bg-white border border-[#E5E0D8] cursor-pointer hover:border-[#F28C28]/40">
                   <input
                     type="checkbox"
                     checked={config.showPlayerTrails}
                     onChange={(e) => onChangeConfig({ showPlayerTrails: e.target.checked })}
-                    className="rounded border-slate-700 bg-slate-900 text-emerald-500 focus:ring-0"
+                    className="rounded border-[#E5E0D8] bg-white accent-[#F28C28] focus:ring-0"
                   />
-                  <span className="text-[11px] text-slate-300">Movement Trails</span>
+                  <span className="text-[11px] text-[#171717]">Movement Trails</span>
                 </label>
 
                 {/* Velocity Arrows */}
-                <label className="flex items-center space-x-2 p-2 rounded bg-slate-900/60 border border-slate-800 cursor-pointer hover:border-slate-700">
+                <label className="flex items-center space-x-2 p-2 rounded-lg bg-white border border-[#E5E0D8] cursor-pointer hover:border-[#F28C28]/40">
                   <input
                     type="checkbox"
                     checked={config.showVelocityArrows}

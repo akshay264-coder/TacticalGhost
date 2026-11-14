@@ -132,27 +132,25 @@ export const OpponentIntelligenceCentre: React.FC<OpponentIntelligenceCentreProp
   });
 
   return (
-    <div className="flex flex-col space-y-6">
+    <div className="flex flex-col space-y-6 text-[#171717]">
       {/* Top Header Card */}
-      <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 backdrop-blur shadow-xl relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl -z-10 pointer-events-none" />
-
+      <div className="bg-white border border-[#E5E0D8] rounded-2xl p-6 shadow-sm relative overflow-hidden">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
             <div className="flex items-center space-x-3 mb-1.5">
-              <div className="p-2 rounded-xl bg-cyan-950/80 border border-cyan-800/60 text-cyan-400">
+              <div className="p-2 rounded-xl bg-[#FEF3E8] border border-[#FCD8B3] text-[#F28C28]">
                 <Compass className="w-6 h-6" />
               </div>
               <div>
                 <div className="flex items-center space-x-2.5">
-                  <h1 className="text-xl font-bold tracking-tight text-slate-100">
+                  <h1 className="text-xl font-bold tracking-tight text-[#171717]">
                     OPPONENT INTELLIGENCE CENTRE
                   </h1>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase bg-cyan-950 border border-cyan-800 text-cyan-400">
+                  <span className="px-2 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase bg-[#FEF3E8] border border-[#FCD8B3] text-[#F28C28]">
                     Multi-Match DNA (25 Hz)
                   </span>
                 </div>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-[#525252]">
                   Cross-match telemetry synthesis, explainable vulnerability discovery, and strategic preparation playbooks.
                 </p>
               </div>
@@ -161,24 +159,24 @@ export const OpponentIntelligenceCentre: React.FC<OpponentIntelligenceCentreProp
 
           <div className="flex flex-wrap items-center gap-3">
             {/* Target Opponent Selector */}
-            <div className="flex items-center rounded-lg bg-slate-950 p-1 border border-slate-800 text-xs">
-              <span className="text-slate-500 px-2 font-medium">Opponent:</span>
+            <div className="flex items-center rounded-xl bg-[#FAF7F2] p-1 border border-[#E5E0D8] text-xs">
+              <span className="text-[#525252] px-2 font-medium">Opponent:</span>
               <button
                 onClick={() => setOpponentTeam('Away')}
-                className={`px-3 py-1 rounded font-semibold transition ${
+                className={`px-3 py-1 rounded-lg font-semibold transition ${
                   opponentTeam === 'Away'
-                    ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
-                    : 'text-slate-400 hover:text-slate-200'
+                    ? 'bg-rose-50 text-rose-700 border border-rose-200'
+                    : 'text-[#525252] hover:text-[#171717]'
                 }`}
               >
                 Away Team
               </button>
               <button
                 onClick={() => setOpponentTeam('Home')}
-                className={`px-3 py-1 rounded font-semibold transition ${
+                className={`px-3 py-1 rounded-lg font-semibold transition ${
                   opponentTeam === 'Home'
-                    ? 'bg-blue-500/20 text-blue-300 border border-blue-500/40'
-                    : 'text-slate-400 hover:text-slate-200'
+                    ? 'bg-blue-50 text-blue-700 border border-blue-200'
+                    : 'text-[#525252] hover:text-[#171717]'
                 }`}
               >
                 Home Team
@@ -191,7 +189,7 @@ export const OpponentIntelligenceCentre: React.FC<OpponentIntelligenceCentreProp
                 const url = getCommercialOpponentBriefingHtmlUrl(opponentTeam, selectedMatches.join(','));
                 window.open(url, '_blank');
               }}
-              className="flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-slate-950 text-xs font-bold transition shadow-md shadow-cyan-600/20"
+              className="flex items-center space-x-2 px-3.5 py-1.5 rounded-xl bg-[#F28C28] hover:bg-[#E07B18] text-white text-xs font-bold transition shadow-sm"
             >
               <Printer className="w-3.5 h-3.5" />
               <span>Commercial Briefing</span>
@@ -200,64 +198,64 @@ export const OpponentIntelligenceCentre: React.FC<OpponentIntelligenceCentreProp
             <button
               onClick={loadAllOpponentData}
               disabled={loading}
-              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition"
+              className="p-1.5 rounded-lg bg-[#FAF7F2] hover:bg-white text-[#525252] border border-[#E5E0D8] transition"
               title="Refresh telemetry"
             >
-              <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin text-cyan-400' : ''}`} />
+              <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin text-[#F28C28]' : ''}`} />
             </button>
           </div>
         </div>
 
         {/* Top 4 Key Metric Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-          <div className="bg-slate-950/70 border border-slate-800/80 rounded-xl p-4 flex flex-col justify-between">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 block mb-1">
+          <div className="bg-[#FAF7F2] border border-[#E5E0D8] rounded-xl p-4 flex flex-col justify-between">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-[#525252] block mb-1">
               Tactical Archetype
             </span>
-            <div className="text-sm font-bold text-slate-200 leading-snug">
+            <div className="text-sm font-bold text-[#171717] leading-snug">
               {profile ? profile.overall_tactical_archetype : 'Analyzing telemetry...'}
             </div>
-            <div className="mt-2 text-[10px] text-slate-500">
+            <div className="mt-2 text-[10px] text-[#525252]">
               Across {selectedMatches.length} verified Metrica matches
             </div>
           </div>
 
-          <div className="bg-slate-950/70 border border-slate-800/80 rounded-xl p-4 flex flex-col justify-between">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 block mb-1">
+          <div className="bg-[#FAF7F2] border border-[#E5E0D8] rounded-xl p-4 flex flex-col justify-between">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-[#525252] block mb-1">
               Data Compatibility
             </span>
             <div className="flex items-baseline space-x-2">
-              <span className="text-2xl font-black text-emerald-400 font-mono">
+              <span className="text-2xl font-black text-emerald-600 font-mono">
                 {compatibility ? `${compatibility.overall_score}%` : '100%'}
               </span>
-              <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-emerald-950 text-emerald-300 border border-emerald-800/60">
+              <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-emerald-50 text-emerald-700 border border-emerald-200">
                 Verified
               </span>
             </div>
-            <div className="mt-1 text-[10px] text-slate-400 flex items-center space-x-1">
-              <CheckCircle2 className="w-3 h-3 text-emerald-400 inline" />
+            <div className="mt-1 text-[10px] text-[#525252] flex items-center space-x-1">
+              <CheckCircle2 className="w-3 h-3 text-emerald-600 inline" />
               <span>105x68m coords • 25 Hz telemetry</span>
             </div>
           </div>
 
-          <div className="bg-slate-950/70 border border-slate-800/80 rounded-xl p-4 flex flex-col justify-between">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 block mb-1">
+          <div className="bg-[#FAF7F2] border border-[#E5E0D8] rounded-xl p-4 flex flex-col justify-between">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-[#525252] block mb-1">
               Systemic Vulnerabilities
             </span>
             <div className="flex items-baseline space-x-2">
-              <span className="text-2xl font-black text-rose-400 font-mono">
+              <span className="text-2xl font-black text-rose-600 font-mono">
                 {weaknesses.length}
               </span>
-              <span className="text-xs text-rose-300/80 font-medium">
+              <span className="text-xs text-rose-700 font-medium">
                 Flaws Confirmed (Recurrence ≥ 2)
               </span>
             </div>
-            <div className="mt-1 text-[10px] text-slate-400">
-              Top flaw score: <strong className="text-rose-300">{weaknesses[0]?.vulnerability_score || 0}/100</strong>
+            <div className="mt-1 text-[10px] text-[#525252]">
+              Top flaw score: <strong className="text-rose-600">{weaknesses[0]?.vulnerability_score || 0}/100</strong>
             </div>
           </div>
 
-          <div className="bg-slate-950/70 border border-slate-800/80 rounded-xl p-4 flex flex-col justify-between">
+          <div className="bg-[#FAF7F2] border border-[#E5E0D8] rounded-xl p-4 flex flex-col justify-between">
             <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 block mb-1">
               Progression Channel Bias
             </span>
@@ -271,7 +269,7 @@ export const OpponentIntelligenceCentre: React.FC<OpponentIntelligenceCentreProp
         </div>
 
         {/* Sub-Tabs Navigation */}
-        <div className="flex items-center space-x-2 mt-6 pt-4 border-t border-slate-800/80 overflow-x-auto text-xs font-semibold">
+        <div className="flex items-center space-x-2 mt-6 pt-4 border-t border-[#E5E0D8] overflow-x-auto text-xs font-semibold scrollbar-none">
           {[
             { id: 'dna', label: 'Tactical DNA', icon: Compass, count: undefined },
             { id: 'weaknesses', label: 'Weaknesses & Exploits', icon: AlertTriangle, count: weaknesses.length },
@@ -289,15 +287,15 @@ export const OpponentIntelligenceCentre: React.FC<OpponentIntelligenceCentreProp
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl transition whitespace-nowrap ${
                   isActive
-                    ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                    ? 'bg-[#F28C28] text-white shadow-sm font-bold'
+                    : 'text-[#525252] hover:text-[#171717] hover:bg-[#FAF7F2] border border-[#E5E0D8]'
                 }`}
               >
-                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-cyan-400' : 'text-slate-400'}`} />
+                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-white' : 'text-[#525252]'}`} />
                 <span>{tab.label}</span>
                 {tab.count !== undefined && (
-                  <span className={`px-1.5 py-0.2 rounded-full text-[10px] ${
-                    isActive ? 'bg-cyan-900/80 text-cyan-200' : 'bg-slate-800 text-slate-400'
+                  <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-mono ${
+                    isActive ? 'bg-white/25 text-white' : 'bg-[#EAE3D2] text-[#525252]'
                   }`}>
                     {tab.count}
                   </span>
@@ -310,14 +308,14 @@ export const OpponentIntelligenceCentre: React.FC<OpponentIntelligenceCentreProp
 
       {/* Main Tab Content */}
       {loading ? (
-        <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-16 flex flex-col items-center justify-center space-y-4 text-center">
-          <RefreshCw className="w-8 h-8 text-cyan-400 animate-spin" />
-          <p className="text-sm font-medium text-slate-300">
+        <div className="bg-white border border-[#E5E0D8] rounded-2xl p-16 flex flex-col items-center justify-center space-y-4 text-center shadow-sm">
+          <RefreshCw className="w-8 h-8 text-[#F28C28] animate-spin" />
+          <p className="text-sm font-medium text-[#525252]">
             Synthesizing 25 Hz telemetry across {selectedMatches.join(' and ')}...
           </p>
         </div>
       ) : error ? (
-        <div className="bg-rose-950/40 border border-rose-800 rounded-2xl p-8 text-rose-200 flex items-center space-x-3">
+        <div className="bg-rose-50 border border-rose-200 rounded-2xl p-8 text-rose-800 flex items-center space-x-3">
           <AlertTriangle className="w-6 h-6 text-rose-400 shrink-0" />
           <div>
             <h3 className="font-bold">Error loading multi-match data</h3>

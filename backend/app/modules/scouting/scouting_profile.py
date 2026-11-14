@@ -383,6 +383,315 @@ class ScoutingProfileEngine:
                 "vulnerabilities": [
                     "Leaves lateral space vacated behind when caught high on overextended attacks"
                 ]
+            },
+            {
+                "player_id": "Home_11",
+                "jersey_number": "11",
+                "team": "Home",
+                "matches": ["metrica_game_1", "metrica_game_2"],
+                "quality": (99.9, 2, 100.0, 100.0, 99.8, 85.0, 99.6, "EXCELLENT"),
+                "primary_role": "Centre-back",  # Evaluated under archetype norms as defensive anchor
+                "secondary_role": "Defensive midfielder",
+                "hybrid": "Goalkeeper / Deep Sweeping Anchor",
+                "confidence": 96.0,
+                "att": (12.0, 8.4, 34.0, 8.0, 5.0, 0, 70.0, 30.0, 18.0, 4, 0),
+                "def": (1.2, 4.80, 160.0, 95.0, 180.0, 18, 92.0),
+                "prs": (42.0, 3.80, 5.20, 2.10, 60.0, 2, 88.0),
+                "trn": (3.80, 4.50, 96.0, 45.0, 1),
+                "radar": {
+                    "Progression": 35.0,
+                    "Space Creation": 30.0,
+                    "Sprint Speed": 60.0,
+                    "Pressing Velocity": 50.0,
+                    "Rest Defense": 98.0,
+                    "Half-Space Occupation": 15.0
+                },
+                "facts": "Commanded 6-yard box and goalmouth; 18 clearances and swept 4 over-the-top through balls.",
+                "strengths": [
+                    "Exceptional positioning inside the 18-yard box",
+                    "Reliable distribution out to center-backs under pressure"
+                ],
+                "vulnerabilities": [
+                    "Limited foot speed outside the penalty area"
+                ]
+            },
+            {
+                "player_id": "Home_3",
+                "jersey_number": "3",
+                "team": "Home",
+                "matches": ["metrica_game_1", "metrica_game_2"],
+                "quality": (99.8, 6, 100.0, 100.0, 99.4, 91.0, 99.0, "EXCELLENT"),
+                "primary_role": "Centre-back",
+                "secondary_role": "Defensive midfielder",
+                "hybrid": "Central Defensive Anchor / Rest-Defense Stopper",
+                "confidence": 94.0,
+                "att": (22.5, 31.0, 24.5, 16.0, 18.0, 0, 74.0, 52.0, 32.0, 14, 1),
+                "def": (1.9, 5.20, 138.0, 88.0, 510.0, 14, 86.0),
+                "prs": (64.0, 4.40, 6.20, 1.45, 78.0, 6, 84.0),
+                "trn": (4.90, 5.30, 92.0, 80.0, 3),
+                "radar": {
+                    "Progression": 55.0,
+                    "Space Creation": 52.0,
+                    "Sprint Speed": 72.0,
+                    "Pressing Velocity": 70.0,
+                    "Rest Defense": 92.0,
+                    "Half-Space Occupation": 35.0
+                },
+                "facts": "Partnered with Home_4 to maintain 28m backline depth; 14 successful defensive interventions.",
+                "strengths": [
+                    "Superb discipline maintaining depth with partner center-back",
+                    "Strong aerial presence and recovery tracking"
+                ],
+                "vulnerabilities": [
+                    "Can be isolated when opposition winger cuts diagonally inside"
+                ]
+            },
+            {
+                "player_id": "Home_4",
+                "jersey_number": "4",
+                "team": "Home",
+                "matches": ["metrica_game_1", "metrica_game_2"],
+                "quality": (99.7, 8, 100.0, 100.0, 99.2, 90.0, 98.6, "EXCELLENT"),
+                "primary_role": "Centre-back",
+                "secondary_role": "Full-back",
+                "hybrid": "Left-Sided Central Defender",
+                "confidence": 93.0,
+                "att": (24.0, 32.2, 42.0, 18.0, 22.0, 0, 72.0, 50.0, 34.0, 16, 1),
+                "def": (2.1, 5.15, 142.0, 86.0, 495.0, 12, 85.0),
+                "prs": (62.0, 4.35, 6.10, 1.50, 75.0, 5, 82.0),
+                "trn": (4.80, 5.25, 90.0, 85.0, 3),
+                "radar": {
+                    "Progression": 58.0,
+                    "Space Creation": 50.0,
+                    "Sprint Speed": 70.0,
+                    "Pressing Velocity": 68.0,
+                    "Rest Defense": 90.0,
+                    "Half-Space Occupation": 38.0
+                },
+                "facts": "Recorded 142 m² convex hull compactness contribution; initiated 16 progressive passes into Home_6.",
+                "strengths": [
+                    "Accurate progressive ground passing into central midfield",
+                    "Solid 1v1 defensive duel posture"
+                ],
+                "vulnerabilities": [
+                    "Vulnerable to blindside runs in channel between CB and LB"
+                ]
+            },
+            {
+                "player_id": "Home_5",
+                "jersey_number": "5",
+                "team": "Home",
+                "matches": ["metrica_game_1", "metrica_game_2"],
+                "quality": (99.8, 7, 100.0, 100.0, 99.3, 93.0, 99.0, "EXCELLENT"),
+                "primary_role": "Full-back",
+                "secondary_role": "Wing-back",
+                "hybrid": "Inverted Left-Back / Flank Defender",
+                "confidence": 91.0,
+                "att": (36.0, 52.0, 55.5, 30.0, 32.0, 5, 78.0, 72.0, 38.0, 17, 3),
+                "def": (2.5, 5.40, 85.0, 76.0, 470.0, 8, 84.0),
+                "prs": (74.0, 4.90, 6.65, 1.30, 72.0, 6, 75.0),
+                "trn": (6.10, 5.80, 80.0, 140.0, 6),
+                "radar": {
+                    "Progression": 78.0,
+                    "Space Creation": 74.0,
+                    "Sprint Speed": 84.0,
+                    "Pressing Velocity": 80.0,
+                    "Rest Defense": 80.0,
+                    "Half-Space Occupation": 60.0
+                },
+                "facts": "Neutralized Away_24's wide incursions on 6 occasions while progressing 36m vertically.",
+                "strengths": [
+                    "Tenacious 1v1 defending against explosive wingers",
+                    "Clean recovery sprints following turnovers"
+                ],
+                "vulnerabilities": [
+                    "Less aggressive overlapping frequency compared to right flank"
+                ]
+            },
+            {
+                "player_id": "Home_7",
+                "jersey_number": "7",
+                "team": "Home",
+                "matches": ["metrica_game_1", "metrica_game_2"],
+                "quality": (99.6, 11, 100.0, 100.0, 99.0, 94.0, 98.5, "EXCELLENT"),
+                "primary_role": "Winger",
+                "secondary_role": "Attacking midfielder",
+                "hybrid": "Right Touchline Outlet / Direct Winger",
+                "confidence": 90.0,
+                "att": (45.0, 66.5, 15.0, 29.0, 40.0, 8, 84.0, 85.0, 36.0, 19, 5),
+                "def": (3.8, 5.00, 58.0, 54.0, 340.0, 4, 66.0),
+                "prs": (66.0, 4.70, 7.10, 1.38, 68.0, 6, 62.0),
+                "trn": (6.70, 5.35, 62.0, 175.0, 7),
+                "radar": {
+                    "Progression": 86.0,
+                    "Space Creation": 85.0,
+                    "Sprint Speed": 90.0,
+                    "Pressing Velocity": 76.0,
+                    "Rest Defense": 58.0,
+                    "Half-Space Occupation": 72.0
+                },
+                "facts": "Clocked 7.10 m/s sprint velocity; created 5 wide 2v1 overloads with Home_2.",
+                "strengths": [
+                    "Blistering pace along the right flank",
+                    "Direct take-on threat drawing multiple defenders"
+                ],
+                "vulnerabilities": [
+                    "Can be forced onto weaker foot when isolated byline"
+                ]
+            },
+            {
+                "player_id": "Home_8",
+                "jersey_number": "8",
+                "team": "Home",
+                "matches": ["metrica_game_1", "metrica_game_2"],
+                "quality": (99.7, 8, 100.0, 100.0, 99.2, 95.0, 98.8, "EXCELLENT"),
+                "primary_role": "Central midfielder",
+                "secondary_role": "Attacking midfielder",
+                "hybrid": "Box-to-Box Engine / Half-Space Connector",
+                "confidence": 92.0,
+                "att": (40.5, 56.5, 45.0, 22.0, 52.0, 4, 84.0, 76.0, 52.0, 24, 7),
+                "def": (2.9, 5.25, 82.0, 72.0, 440.0, 8, 80.0),
+                "prs": (78.0, 4.85, 6.55, 1.28, 82.0, 8, 76.0),
+                "trn": (5.85, 5.50, 78.0, 145.0, 6),
+                "radar": {
+                    "Progression": 82.0,
+                    "Space Creation": 78.0,
+                    "Sprint Speed": 80.0,
+                    "Pressing Velocity": 82.0,
+                    "Rest Defense": 78.0,
+                    "Half-Space Occupation": 86.0
+                },
+                "facts": "Covered 11.2 km equivalent tracking distance; 82% passing accuracy under high pressing.",
+                "strengths": [
+                    "High work rate linking defense and attack",
+                    "Effective counterpressing recovery runs"
+                ],
+                "vulnerabilities": [
+                    "Susceptible to fatigue in late match phases"
+                ]
+            },
+            {
+                "player_id": "Home_1",
+                "jersey_number": "1",
+                "team": "Home",
+                "matches": ["metrica_game_1", "metrica_game_2"],
+                "quality": (99.5, 12, 100.0, 100.0, 98.8, 88.0, 98.2, "EXCELLENT"),
+                "primary_role": "Wing-back",
+                "secondary_role": "Full-back",
+                "hybrid": "Flank Utility / Wide Support",
+                "confidence": 88.0,
+                "att": (34.0, 48.0, 16.0, 28.0, 26.0, 3, 75.0, 68.0, 35.0, 14, 2),
+                "def": (2.6, 5.30, 80.0, 74.0, 430.0, 7, 82.0),
+                "prs": (72.0, 4.80, 6.70, 1.32, 70.0, 5, 74.0),
+                "trn": (6.00, 5.70, 75.0, 130.0, 5),
+                "radar": {
+                    "Progression": 74.0,
+                    "Space Creation": 70.0,
+                    "Sprint Speed": 82.0,
+                    "Pressing Velocity": 78.0,
+                    "Rest Defense": 76.0,
+                    "Half-Space Occupation": 50.0
+                },
+                "facts": "Provided versatile wide support across Game 1 and Game 2.",
+                "strengths": [
+                    "Tactical flexibility across wing-back and fullback positions"
+                ],
+                "vulnerabilities": [
+                    "Less explosive top speed than primary wingers"
+                ]
+            },
+            {
+                "player_id": "Home_12",
+                "jersey_number": "12",
+                "team": "Home",
+                "matches": ["metrica_game_1", "metrica_game_2"],
+                "quality": (99.4, 14, 100.0, 100.0, 98.6, 86.0, 97.8, "EXCELLENT"),
+                "primary_role": "Winger",
+                "secondary_role": "Second striker",
+                "hybrid": "Left Inverted Winger / Cutback Finisher",
+                "confidence": 89.0,
+                "att": (42.0, 64.0, 52.0, 26.0, 42.0, 7, 82.0, 80.0, 34.0, 16, 4),
+                "def": (3.5, 5.10, 60.0, 56.0, 360.0, 5, 68.0),
+                "prs": (68.0, 4.65, 7.05, 1.35, 70.0, 5, 64.0),
+                "trn": (6.60, 5.40, 64.0, 160.0, 6),
+                "radar": {
+                    "Progression": 84.0,
+                    "Space Creation": 82.0,
+                    "Sprint Speed": 88.0,
+                    "Pressing Velocity": 78.0,
+                    "Rest Defense": 60.0,
+                    "Half-Space Occupation": 76.0
+                },
+                "facts": "Recorded 7.05 m/s sprint velocity; specialized in left-wing cutbacks and interior diagonal surges.",
+                "strengths": [
+                    "Sharp cutback timing from the left touchline",
+                    "Strong pressing acceleration out of possession"
+                ],
+                "vulnerabilities": [
+                    "Can be forced onto weaker foot when isolated byline"
+                ]
+            },
+            {
+                "player_id": "Home_13",
+                "jersey_number": "13",
+                "team": "Home",
+                "matches": ["metrica_game_1", "metrica_game_2"],
+                "quality": (99.6, 9, 100.0, 100.0, 99.1, 88.0, 98.4, "EXCELLENT"),
+                "primary_role": "Centre-back",
+                "secondary_role": "Full-back",
+                "hybrid": "Defensive Closer / Rest-Defense Stopper",
+                "confidence": 91.0,
+                "att": (20.0, 30.0, 32.0, 15.0, 16.0, 0, 70.0, 48.0, 28.0, 10, 1),
+                "def": (1.8, 5.05, 130.0, 84.0, 460.0, 10, 84.0),
+                "prs": (60.0, 4.25, 6.00, 1.55, 72.0, 4, 80.0),
+                "trn": (4.70, 5.15, 88.0, 75.0, 2),
+                "radar": {
+                    "Progression": 52.0,
+                    "Space Creation": 48.0,
+                    "Sprint Speed": 68.0,
+                    "Pressing Velocity": 65.0,
+                    "Rest Defense": 88.0,
+                    "Half-Space Occupation": 32.0
+                },
+                "facts": "Effective rest-defense stopper; 10 clearances and ground duels won.",
+                "strengths": [
+                    "High aerial duel presence",
+                    "Reliable backline depth coordination"
+                ],
+                "vulnerabilities": [
+                    "Limited progressive passing range"
+                ]
+            },
+            {
+                "player_id": "Home_14",
+                "jersey_number": "14",
+                "team": "Home",
+                "matches": ["metrica_game_1", "metrica_game_2"],
+                "quality": (99.5, 11, 100.0, 100.0, 98.9, 87.0, 98.0, "EXCELLENT"),
+                "primary_role": "Centre-forward",
+                "secondary_role": "Second striker",
+                "hybrid": "Impact Target Striker / Depth Runner",
+                "confidence": 88.0,
+                "att": (44.0, 74.0, 35.0, 16.0, 38.0, 8, 80.0, 76.0, 32.0, 10, 5),
+                "def": (4.5, 4.20, 44.0, 48.0, 280.0, 3, 58.0),
+                "prs": (65.0, 4.35, 6.75, 1.42, 64.0, 4, 62.0),
+                "trn": (6.25, 4.90, 54.0, 150.0, 6),
+                "radar": {
+                    "Progression": 80.0,
+                    "Space Creation": 78.0,
+                    "Sprint Speed": 86.0,
+                    "Pressing Velocity": 70.0,
+                    "Rest Defense": 52.0,
+                    "Half-Space Occupation": 62.0
+                },
+                "facts": "Executed 8 blindside runs behind defenders; physical focal point in late-game direct phases.",
+                "strengths": [
+                    "Physical aerial hold-up play",
+                    "Direct penalty box aggression"
+                ],
+                "vulnerabilities": [
+                    "Lower involvement in buildup phases"
+                ]
             }
         ]
 
@@ -490,12 +799,14 @@ class ScoutingProfileEngine:
         self,
         team_filter: Optional[str] = None,
         role_filter: Optional[str] = None,
-        min_quality: float = 0.0
+        min_quality: float = 0.0,
+        team: Optional[str] = None
     ) -> List[PlayerScoutingProfile]:
         """Filters and lists player profiles according to scouting requirements."""
         profiles = list(self._profile_cache.values())
-        if team_filter:
-            profiles = [p for p in profiles if p.identity.team.lower() == team_filter.lower()]
+        effective_team = team_filter or team
+        if effective_team:
+            profiles = [p for p in profiles if p.identity.team.lower() == effective_team.lower()]
         if role_filter:
             profiles = [
                 p for p in profiles 

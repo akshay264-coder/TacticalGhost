@@ -222,3 +222,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Temporary report builds
+*.tmp.html
+backend/data/reports/*
+!backend/data/reports/.gitkeep
+
+

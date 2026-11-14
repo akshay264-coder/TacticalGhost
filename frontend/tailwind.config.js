@@ -7,6 +7,31 @@ export default {
   theme: {
     extend: {
       colors: {
+        cream: {
+          50: '#FAF8F5',
+          100: '#F5F0E6',  // Primary background
+          200: '#EAE3D2',
+          300: '#DDD3BC',
+          surface: '#FAF7F2', // Secondary background
+          card: '#FFFFFF',
+          border: '#E5E0D8',
+          borderMuted: '#D6D0C4',
+        },
+        ink: {
+          950: '#171717',  // Primary near-black text
+          900: '#262626',
+          800: '#404040',
+          700: '#525252',  // Supporting muted charcoal
+          600: '#737373',
+          500: '#A3A3A3',
+          muted: '#737373',
+        },
+        brand: {
+          orange: '#F28C28',        // Accent orange
+          orangeHover: '#E07B18',
+          orangeLight: '#FEF3E8',
+          orangeBorder: '#FCD8B3',
+        },
         pitch: {
           dark: '#0c1a11',
           grass: '#142b1e',

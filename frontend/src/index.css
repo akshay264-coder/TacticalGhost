@@ -4,6 +4,25 @@
 
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-100;
+    @apply bg-[#F5F0E6] text-[#171717] antialiased selection:bg-[#F28C28] selection:text-white font-sans;
+  }
+
+  /* Custom subtle scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #EAE3D2;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #D6D0C4;
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #F28C28;
   }
 }

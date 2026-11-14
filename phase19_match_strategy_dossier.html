@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TacticalGhost — Match Strategy Dossier (backend/data/metrica_sample)</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            margin: 0;
+            padding: 30px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 32px;
+            border: 1px solid #334155;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+        h1, h2, h3 { color: #f8fafc; margin-top: 0; }
+        h1 { font-size: 24px; border-bottom: 2px solid #f97316; padding-bottom: 8px; margin-bottom: 16px; }
+        h2 { font-size: 16px; color: #f97316; margin-top: 24px; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .badge-orange { background: #f97316; color: #fff; }
+        .badge-cyan { background: #0284c7; color: #fff; }
+        .badge-green { background: #16a34a; color: #fff; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .card {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 16px;
+        }
+        table { width: 100%; border-collapse: collapse; margin-top: 8px; text-align: left; }
+        th { background: #0f172a; padding: 8px; border-bottom: 2px solid #475569; font-size: 11px; text-transform: uppercase; color: #94a3b8; }
+        .disclaimer-box {
+            background: rgba(15, 23, 42, 0.8);
+            border-left: 4px solid #f97316;
+            padding: 12px;
+            margin-top: 24px;
+            font-size: 11px;
+            color: #94a3b8;
+        }
+        @media print {
+            body { background: #fff; color: #000; padding: 0; }
+            .container { background: #fff; color: #000; border: none; box-shadow: none; padding: 0; }
+            h1, h2, h3 { color: #000; }
+            .card { background: #f8fafc; border: 1px solid #cbd5e1; }
+            th { background: #e2e8f0; color: #334155; }
+            td { border-bottom: 1px solid #e2e8f0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h1>TACTICALGHOST — MATCH STRATEGY DOSSIER</h1>
+                <p style="color: #94a3b8; margin: 0;">Comprehensive Decision Support Report for Match Preparation vs <strong>backend/data/metrica_sample</strong></p>
+            </div>
+            <div style="text-align: right;">
+                <span class="badge badge-orange">4-3-3 Formation</span>
+                <span class="badge badge-cyan" style="margin-left: 4px;">POSSESSION_BUILDUP</span>
+                <div style="color: #64748b; font-size: 10px; margin-top: 6px;">Generated: 2026-11-14T08:25:15Z</div>
+            </div>
+        </div>
+
+        <h2>1. Executive Summary & Opponent Identity</h2>
+        <div class="grid-2">
+            <div class="card">
+                <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Tactical DNA Archetype</div>
+                <div style="font-size: 16px; font-weight: bold; color: #38bdf8; margin-top: 2px;">Fast-Break Transitional Direct Block</div>
+                <p style="margin-top: 8px; font-size: 12px;">Opponent prioritizes low-block central protection and rapid vertical releases into wide channels, while leaving intermediate pockets vulnerable.</p>
+                <div style="font-size: 11px; color: #64748b;">Telemetry: 25 Hz synchronized optical tracking data across Metrica Game 1 & Game 2</div>
+            </div>
+            <div class="card">
+                <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Kinematic Benchmarks</div>
+                <div style="margin-top: 6px; font-size: 12px; line-height: 1.8;">
+                    • Projected Pitch Control: <strong style="color: #4ade80;">47.6%</strong><br>
+                    • Opponent Closing Velocity: <strong>4.88 m/s</strong><br>
+                    • Opponent Defensive Depth: <strong>28.4m</strong> (Convex Hull: 382.0 m²)<br>
+                    • Transitional Surge Pace: <strong>Fast (4.8s from turnover to attacking third entry)</strong>
+                </div>
+            </div>
+        </div>
+
+        <h2>2. Proposed Starting XI & Tactical Roles (4-3-3)</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Slot</th>
+                        <th>Position</th>
+                        <th>Assigned Player</th>
+                        <th>Role Fit</th>
+                        <th>Operational Duty</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #38bdf8;">GK</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Goalkeeper</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-family: monospace; color: #f97316;">Home_11 (#11)</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; color: #4ade80;">99.0%</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Sweeper-Keeper</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #38bdf8;">RB</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Right-Back</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-family: monospace; color: #f97316;">Home_5 (#5)</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; color: #4ade80;">92.8%</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Overlapping Channel Support</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #38bdf8;">RCB</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Right Centre-Back</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-family: monospace; color: #f97316;">Home_3 (#3)</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; color: #4ade80;">95.8%</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Defensive Anchor / Stopper</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #38bdf8;">LCB</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Left Centre-Back</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-family: monospace; color: #f97316;">Home_4 (#4)</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; color: #4ade80;">94.7%</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Covering Defender</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #38bdf8;">LB</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Left-Back</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-family: monospace; color: #f97316;">Home_2 (#2)</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; color: #4ade80;">90.8%</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Flank Containment</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #38bdf8;">DM</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Defensive Midfielder</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-family: monospace; color: #f97316;">Home_6 (#6)</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; color: #4ade80;">82.6%</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Single Pivot & Screening</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #38bdf8;">RCM</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Right Central Midfielder</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-family: monospace; color: #f97316;">Home_8 (#8)</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; color: #4ade80;">93.8%</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Box-to-Box Progression</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #38bdf8;">LCM</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Left Central Midfielder</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-family: monospace; color: #f97316;">Home_10 (#10)</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; color: #4ade80;">70.9%</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Half-Space Pocket Infiltration</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #38bdf8;">RW</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Right Winger</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-family: monospace; color: #f97316;">Home_7 (#7)</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; color: #4ade80;">91.7%</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Touchline Isolation & Crossing</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #38bdf8;">LW</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Left Winger</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-family: monospace; color: #f97316;">Home_12 (#12)</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; color: #4ade80;">90.6%</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Inverted Half-Space Threat</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #38bdf8;">CF</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Centre-Forward</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-family: monospace; color: #f97316;">Home_9 (#9)</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; color: #4ade80;">91.8%</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Penalty Area Reference & Blindside Finisher</td>
+            </tr>
+            
+                </tbody>
+            </table>
+            <div style="margin-top: 8px; font-size: 11px; color: #94a3b8;">
+                Squad Tactical Balance Score: <strong style="color: #4ade80;">90.4/100</strong>. Available Bench: 3 candidates.
+            </div>
+        </div>
+
+        <h2>3. Strategic Opponent Exploitation Plan</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Corridor</th>
+                        <th>Target Weakness</th>
+                        <th>Tactical Mechanism</th>
+                        <th>Prescribed Pattern</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #f59e0b;">WIDE_CHANNEL</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold;">Byline Cutback Delivery into Penalty Arc Pocket</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">When the byline is attacked wide, Away's center-backs (Away_15, Away_16) collapse deep toward the goal line to defend crosses, opening a vacated 14m cutback corridor for trailing central midfielders.</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; color: #38bdf8;">Winger drives to the byline with overlapping fullback support; forward makes aggressive near-post decoy dart to pin the goalkeeper; low driven cutback pass delivered back to incoming attacking midfielder on penalty spot.</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #f59e0b;">CENTRAL_POCKET</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold;">Overload Intermediate Half-Spaces via Third-Man Combinations</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Bait Away_18 into initiating a forward press against deep pivot Home_6; play immediate bounce-pass out to fullback Home_2, then thread diagonal pass into between-the-lines pocket occupied by Home_10.</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; color: #38bdf8;">Central diamond rotation: deep midfielder drops to draw pressure; attacking midfielder holds blindside position behind Away_18; diagonal ground progression with one-touch lay-off to surging striker.</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #f59e0b;">PRESSING_BYPASS</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold;">Circulate Through Goalkeeper to Bypass First-Wave Press</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Draw Away's front two toward the right flank via deep center-back circulation; reset possession back through Goalkeeper Home_11; switch rapidly with lofted diagonal pass to unmarked left fullback Home_5.</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; color: #38bdf8;">U-shaped circulation under pressure: CB -> GK -> opposite CB -> advancing FB with 35m of vacated forward touchline space.</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #f59e0b;">TRANSITION_SURGE</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold;">Exploit Asymmetric Defensive Recovery Depth Behind Away_15</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">The moment ball is won in middle third, forward Home_9 initiates an immediate curved blindside sprint behind Away_16, staying onside due to Away_15's over-deep recovery stance.</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; color: #38bdf8;">Instant vertical release within 2.5 seconds of turnover: ball winner plays early through-ball into channel space without taking secondary touches.</td>
+            </tr>
+            
+                </tbody>
+            </table>
+        </div>
+
+        <h2>4. Defensive Countermeasures (Neutralizing Strengths)</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Opponent Strength</th>
+                        <th>Defensive Response</th>
+                        <th>Assigned Duties</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #f43f5e;">Elite transitional sprint velocity (Away_24: 7.24 m/s peak, 26.6m run)</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Implement a 2v1 Funnel Trap: Left-Back Home_5 shows Away_24 down the outside touchline while holding a 2.5m buffer; Left Centre-Back Home_4 provides staggered depth cover 5m behind; central midfielder Home_6 tracks back to double-team from the inside.</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; color: #94a3b8;">Home_5 (Delay & Channel Containment), Home_4 (Covering Depth), Home_6 (Inside Double-Team)</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #f43f5e;">Aggressive central pressing traps and 88% cover-shadow efficiency (Away_18)</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Adopt Double Pivot & Direct Flank Release: Deploy two holding midfielders (4-2-3-1 or 3-5-2) spaced 18m apart to split Away_18's pressing focus. When pressed, bypass the central duel entirely by clipping direct lofted balls into wide wingers.</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; color: #94a3b8;">Double Pivot Midfielders (Spacing & Triangular Relief), Home_10 (Blindside Depth Outlet)</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #f43f5e;">Long diagonal switches and rapid forward line-breaking passes</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Establish a Synchronized Sweeper-Keeper & Compact Mid-Block: Cap defensive backline depth at 34m (mid-block); Goalkeeper Home_11 maintains an active starting position at 14m to clear through-balls.</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; color: #94a3b8;">Home_11 (Sweeping Coverage), Home_3 & Home_4 (Depth Synchrony <= 2.5m)</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #f43f5e;">Numerical commitment on transition counters (4 players surging forward within 3.5s)</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155;">Enforce Strict 3+2 Rest-Defense Rule: When Home attacks, one fullback (e.g. Home_2) overlaps while the opposite fullback (Home_5) tucks inside alongside the center-backs to form a rest-defense back three, anchored by a screening holding midfielder.</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; color: #94a3b8;">Fullbacks (Alternating Inverted Rest-Defense), Holding Midfielder (Central Zone Shielding)</td>
+            </tr>
+            
+                </tbody>
+            </table>
+        </div>
+
+        <h2>5. Weekly Training Priorities & Coaching Drills</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Priority</th>
+                        <th>Prescribed Drill</th>
+                        <th>Key Coaching Cues</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #38bdf8;">Priority #1</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold;">Byline Cutback Wave Pattern with Delayed Penalty Spot Runner (6 Attackers vs 4 Defenders + GK)</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-size: 11px;">• Winger: Keep head up and hit low, driven ground pass — avoid high lofted crosses<br>• Striker: Sprint aggressively across the near-post center-back to force hips to turn<br>• Attacking Midfielder: Delay arrival by 1.5 seconds; enter the box as the ball reaches the byline</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #38bdf8;">Priority #2</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold;">2v1 Funnel Delay & Inside Double-Team Trap (3 Attackers vs 3 Defenders + 1 Recovering Pivot)</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-size: 11px;">• Left-Back: Do not dive into tackle — drop your center of gravity and shepherd runner toward the touchline<br>• Center-Back: Maintain 5m diagonal depth buffer; do not leave gap between CB and LB<br>• Midfielder: Take an inside recovery angle to eliminate the cutback lane</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #38bdf8;">Priority #3</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold;">Diamond Press-Bypass Circuit with Blindside Lay-Off (6v4 Possession Rondo with Neutral Free Man)</td>
+                <td style="padding: 8px; border-bottom: 1px solid #334155; font-size: 11px;">• Passer: Disguise pass with body orientation before threading between pressing forwards<br>• Receiver: Open body shape to lay off the ball in one touch without turning into pressure<br>• Third-Man Runner: Commence forward sprint before the second pass is played</td>
+            </tr>
+            
+                </tbody>
+            </table>
+        </div>
+
+        <div class="disclaimer-box">
+            <strong>TacticalGhost Scientific Integrity Charter:</strong> All match preparations, Starting XI proposals, and tactical exploitation plans are synthesized from 25 Hz spatiotemporal coordinates in the official Metrica Sports dataset. Player profiles use PROVISIONAL_ANONYMOUS_TAG; no medical, fitness, or biographical entities are fabricated. Drills and scenario simulations are coaching tools and mathematical extrapolations, not deterministic performance guarantees.
+        </div>
+    </div>
+</body>
+</html>

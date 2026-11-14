@@ -172,23 +172,23 @@ export const TacticalIntelligenceCentre: React.FC<TacticalIntelligenceCentreProp
   }
 
   return (
-    <div className="flex flex-col flex-1 bg-slate-950 text-slate-100 overflow-y-auto">
+    <div className="flex flex-col flex-1 bg-[#F5F0E6] text-[#171717] overflow-y-auto">
       {/* Top Banner Header */}
-      <div className="border-b border-slate-800 bg-slate-900/80 px-6 py-5 backdrop-blur-md">
+      <div className="border-b border-[#E5E0D8] bg-white px-6 py-5 shadow-sm">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center space-x-3 mb-1">
-              <span className="p-1.5 rounded-lg bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
+              <span className="p-2 rounded-xl bg-[#FEF3E8] text-[#F28C28] border border-[#FCD8B3]">
                 <Sparkles className="w-5 h-5" />
               </span>
-              <h1 className="text-2xl font-black tracking-tight text-white">
+              <h1 className="text-2xl font-black tracking-tight text-[#171717]">
                 TACTICAL INTELLIGENCE CENTRE
               </h1>
-              <span className="text-xs px-2.5 py-0.5 rounded-full font-semibold uppercase bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              <span className="text-xs px-2.5 py-0.5 rounded-full font-bold uppercase bg-[#FEF3E8] text-[#F28C28] border border-[#FCD8B3]">
                 Commercial Intelligence
               </span>
             </div>
-            <p className="text-xs text-slate-400 max-w-2xl">
+            <p className="text-xs text-[#525252] max-w-2xl">
               Automated pattern recognition, opponent vulnerability discovery, and coach-ready tactical game plans derived from 25 Hz tracking telemetry.
             </p>
           </div>
@@ -196,14 +196,14 @@ export const TacticalIntelligenceCentre: React.FC<TacticalIntelligenceCentreProp
           <div className="flex items-center space-x-3">
             <button
               onClick={() => window.open(getCommercialBriefingHtmlUrl(), '_blank')}
-              className="flex items-center space-x-2 px-3.5 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold shadow-lg shadow-cyan-900/30 transition border border-cyan-400/30"
+              className="flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-[#F28C28] hover:bg-[#d97706] text-white text-xs font-bold shadow-sm transition"
             >
               <Printer className="w-4 h-4" />
               <span>Print / PDF Briefing</span>
             </button>
             <button
               onClick={loadPatternData}
-              className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition"
+              className="p-2 rounded-xl bg-[#FAF7F2] hover:bg-[#EAE3D2] text-[#525252] border border-[#E5E0D8] transition"
               title="Refresh Analysis"
             >
               <RefreshCw className="w-4 h-4" />
@@ -213,55 +213,55 @@ export const TacticalIntelligenceCentre: React.FC<TacticalIntelligenceCentreProp
 
         {/* KPI Metric Summary Strip */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
-          <div className="bg-slate-900 border border-slate-800 rounded-lg p-3 flex items-center space-x-3">
-            <div className="p-2 rounded bg-cyan-500/10 text-cyan-400">
+          <div className="bg-[#FAF7F2] border border-[#E5E0D8] rounded-xl p-3.5 flex items-center space-x-3">
+            <div className="p-2 rounded-lg bg-[#FEF3E8] text-[#F28C28] border border-[#FCD8B3]">
               <Layers className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xl font-bold text-white leading-tight">
+              <div className="text-xl font-bold text-[#171717] leading-tight">
                 {summaryData.total_patterns_detected}
               </div>
-              <div className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+              <div className="text-[11px] font-semibold text-[#525252] uppercase tracking-wider">
                 Patterns Detected
               </div>
             </div>
           </div>
 
-          <div className="bg-slate-900 border border-slate-800 rounded-lg p-3 flex items-center space-x-3">
-            <div className="p-2 rounded bg-rose-500/10 text-rose-400">
+          <div className="bg-[#FAF7F2] border border-[#E5E0D8] rounded-xl p-3.5 flex items-center space-x-3">
+            <div className="p-2 rounded-lg bg-rose-50 text-rose-600 border border-rose-200">
               <ShieldAlert className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xl font-bold text-white leading-tight">
+              <div className="text-xl font-bold text-rose-600 leading-tight">
                 {summaryData.total_weaknesses_identified}
               </div>
-              <div className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+              <div className="text-[11px] font-semibold text-[#525252] uppercase tracking-wider">
                 Systemic Weaknesses
               </div>
             </div>
           </div>
 
-          <div className="bg-slate-900 border border-slate-800 rounded-lg p-3 flex items-center space-x-3">
-            <div className="p-2 rounded bg-amber-500/10 text-amber-400">
+          <div className="bg-[#FAF7F2] border border-[#E5E0D8] rounded-xl p-3.5 flex items-center space-x-3">
+            <div className="p-2 rounded-lg bg-amber-50 text-amber-600 border border-amber-200">
               <Target className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xl font-bold text-white leading-tight">
+              <div className="text-xl font-bold text-amber-700 leading-tight">
                 {summaryData.total_opportunities_identified}
               </div>
-              <div className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+              <div className="text-[11px] font-semibold text-[#525252] uppercase tracking-wider">
                 Attacking Exploits
               </div>
             </div>
           </div>
 
-          <div className="bg-slate-900 border border-slate-800 rounded-lg p-3 flex items-center space-x-3">
-            <div className="p-2 rounded bg-emerald-500/10 text-emerald-400">
+          <div className="bg-[#FAF7F2] border border-[#E5E0D8] rounded-xl p-3.5 flex items-center space-x-3">
+            <div className="p-2 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-200">
               <CheckCircle2 className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xl font-bold text-white leading-tight">92.4%</div>
-              <div className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+              <div className="text-xl font-bold text-emerald-700 leading-tight">92.4%</div>
+              <div className="text-[11px] font-semibold text-[#525252] uppercase tracking-wider">
                 Confidence Quality
               </div>
             </div>
@@ -269,7 +269,7 @@ export const TacticalIntelligenceCentre: React.FC<TacticalIntelligenceCentreProp
         </div>
 
         {/* Tab Navigation Navigation Strip */}
-        <div className="flex border-b border-slate-800 mt-5 space-x-2 text-xs font-semibold">
+        <div className="flex border-t border-[#E5E0D8] mt-5 pt-4 space-x-2 text-xs font-semibold overflow-x-auto scrollbar-none">
           {[
             { id: 'insights', label: 'Coach Briefing & Action Plan', icon: Sparkles, count: summaryData.coach_insights.length },
             { id: 'patterns', label: 'Team Tactical Patterns', icon: Layers, count: summaryData.patterns.length },
@@ -283,18 +283,18 @@ export const TacticalIntelligenceCentre: React.FC<TacticalIntelligenceCentreProp
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`flex items-center space-x-2 px-4 py-2.5 border-b-2 transition -mb-px ${
+                className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl transition whitespace-nowrap ${
                   isActive
-                    ? 'border-cyan-500 text-cyan-400 bg-cyan-500/10'
-                    : 'border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                    ? 'bg-[#F28C28] text-white shadow-sm font-bold'
+                    : 'text-[#525252] hover:text-[#171717] hover:bg-[#FAF7F2] border border-[#E5E0D8]'
                 }`}
               >
-                <Icon className="w-4 h-4" />
+                <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-[#525252]'}`} />
                 <span>{tab.label}</span>
                 {tab.count !== undefined && (
                   <span
                     className={`ml-1 px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
-                      isActive ? 'bg-cyan-500/20 text-cyan-300' : 'bg-slate-800 text-slate-400'
+                      isActive ? 'bg-white/25 text-white' : 'bg-[#EAE3D2] text-[#525252]'
                     }`}
                   >
                     {tab.count}
